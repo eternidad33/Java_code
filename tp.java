@@ -21,11 +21,17 @@ public class tp {
 			fact*=i;
 			i++;
 		}*/
+		/*
 		int i=1;
 		do {
 			fact*=i;
 			i++;
 		}while(i<=n);
 		return fact;
+		*/
+		if(n==1)
+			return 1;
+		else
+			return fact(n-1)*n;
 	}
 }

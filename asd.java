@@ -1,7 +1,11 @@
+import java.util.Scanner;
 
 public class asd {
 	public static void main(String[] args){
-		int n=4;
+		int n;
+		System.out.println("请输入一个数：");
+		Scanner s1=new Scanner(System.in);
+		n=s1.nextInt();
 		int jz[][]=new int[n][n];
 		int num=1;
 		System.out.println("顺时针方向为：");
