@@ -12,14 +12,17 @@ public class Person {
         return name;
     }
 
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
 
     public Person(){
-        this.name="张三";
-        this.age=24;
+        System.out.println("产生新的对象");
+    }
+    public Person(String name){
+        this();//调用无参构造
+        this.name=name;
+    }
+    public Person(String name, int age) {
+        this(name);//调用单参构造
+        this.age = age;
     }
 
     public void setName(String name) {
