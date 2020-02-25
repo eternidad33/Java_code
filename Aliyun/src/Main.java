@@ -6,7 +6,10 @@
  */
 public class Main {
     public static void main(String[] args) {
-        Person per =new Person();
-        per.tell();
+        Person per1 = new Person();
+        Person per2 = new Person("李四", 14);
+        per1.tell();
+        per2.tell();
     }
+
 }
