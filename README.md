@@ -13,11 +13,6 @@ CLASSPATH：是由JRE提供的，用于定义Java程序解释时类加载路径C
 ---
 Java 1.9之后才有的**Jshell**
 
-java中的**关键字**
-![java中的关键字](https://upload-images.jianshu.io/upload_images/18780226-4f8b31bf3376649e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
----
 **int的取值范围**为-2147483648到2147483647
 
 ```java
@@ -156,5 +151,25 @@ public static int[] reverse(int data[]){
     return data;
 }
 ````
+数组相关的类库  
+数组排序可以这样写`java.util.Arrays.sort(data);`  
+系统自带的数组拷贝
+```java
+public static void main(String[] args) {
+    int dataA[]=new int[]{1,2,3,4,5,6,7,8,9};
+    int dataB[]=new int[]{11,22,33,44,55,66,77,88,99};
+    System.arraycopy(dataA,5,dataB,5,3);
+    printArray(dataB);
+    System.out.println();
+    printArray(dataA);
+}
+```
+运行结果：
+```
+11,22,33,44,55,6,7,8,99,
+1,2,3,4,5,6,7,8,9,
+```
+
+`System.arraycopy(dataA,5,dataB,5,3);`是将数组dataA中从索引为5，长度为3的一段数组复制到dataB中索引位置为5的地方，并替换掉相应长度
 
 ## Java高级进阶
