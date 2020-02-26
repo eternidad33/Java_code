@@ -4,26 +4,49 @@
  * @package PACKAGE_NAME
  * @time 2020-02-26 5:31 pm
  */
+class ArrayUtil{
+    public int getSum() {
+        return sum;
+    }
+
+    public double getAvg() {
+        return avg;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    private int sum;
+    private double avg;
+    private int min;
+    private int max;
+    public ArrayUtil(int[] data){
+        this.sum=0;
+        this.max=data[0];
+        this.min=data[0];
+        for(int num:data){
+            this.sum+=num;
+            if(num>this.max)
+                this.max=num;
+            if(num<this.min)
+                this.min=num;
+        }
+        this.avg=this.sum/data.length;
+    }
+}
 public class ArrayDemo {
     public static void main(String[] args) {
         int data[]=initArray();
-        printArray(data);
-        int sum = 0;
-        int min=data[0];
-        int max=data[0];
-        double avg = 0;
-        for(int num:data){
-            sum+=num;
-            if(num>max)
-                max=num;
-            if(num<min)
-                min=num;
-        }
-        avg=sum/data.length;
-        System.out.println("数组的和为："+sum);
-        System.out.println("数组的平均值为："+avg);
-        System.out.println("数组的最大值为："+max);
-        System.out.println("数组的最小值为："+min);
+        ArrayUtil util=new ArrayUtil(data);
+        System.out.println("数组的和为："+util.getSum());
+        System.out.println("数组的平均值为："+util.getAvg());
+        System.out.println("数组的最大值为："+util.getMax());
+        System.out.println("数组的最小值为："+util.getMin());
 
     }
     public static int[] initArray(){
