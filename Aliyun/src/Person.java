@@ -18,14 +18,6 @@ public class Person {
         System.out.println("【构造方法】：构造方法执行");
     }
 
-    static {
-        System.out.println("【静态代码块块】：静态代码块执行");
-    }
-
-    {
-        System.out.println("【构造块】：构造块执行");
-    }
-
     public Person(String name){
         this();//调用无参构造
         this.name=name;
@@ -52,16 +44,11 @@ public class Person {
     }
 
     public static void main(String[] args) {
-//        Person per1=new Person("张三",14);
-//        Person per2=new Person("李四",14);
-//        Person per3=new Person("王五",14);
-//        per1.country="中华人民共和国";
-//        per1.tell();
-//        per2.tell();
-//        per3.tell();
-        new Person();
-        new Person();
-        new Person();
+        Person per1=new Person("张三",14);
+        Person per2=new Person("李四",14);
+        Person per3=new Person("王五",14);
+        Person per[]=new Person[]{per1,per2,per3};
+        per[2].tell();
 
 
 
