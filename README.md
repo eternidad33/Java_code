@@ -171,5 +171,24 @@ public static void main(String[] args) {
 ```
 
 `System.arraycopy(dataA,5,dataB,5,3);`是将数组dataA中从索引为5，长度为3的一段数组复制到dataB中索引位置为5的地方，并替换掉相应长度
-
+可变参数
+```java
+class ArrayUtil{
+    public static int sum(int ... data){
+        int sum=0;
+        for(int temp:data){
+            sum+=temp;
+        }
+        return sum;
+    }
+}
+public class ArrayDemo {
+    public static void main(String[] args) {
+        System.out.println(ArrayUtil.sum(1,2,3));
+        System.out.println(ArrayUtil.sum(new int[]{1,2,3}));
+    }
+}
+```
+在方法参数列表中`...`表示可变参数  
+可变参数的作用在于，在以后进行一些程序设计或者开发者调用的时候，利用此种形式可以避免数组的传递操作
 ## Java高级进阶
