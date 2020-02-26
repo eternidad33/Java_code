@@ -70,6 +70,7 @@ static的定义的方法或属性都不是你代码编写之初所需要考虑�
 int数组初始化默认为0  
 必须实例化数组才能使用数组下标  
 foreach循环可以避免使用下标，
+foreach遍历二维数组
 ```java
 int data[][] = new int[][]{{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}};
 for (int temp[] : data) {
@@ -79,6 +80,81 @@ for (int temp[] : data) {
     System.out.println();
 }
 ```
+返回数组的方法  
+```java
+public static int[] initArray(){
+    int arr[]=new int[]{1,2,3,4,5};
+    return arr;
+}
+```
+将数组封装成一个组件  
+```java
+class ArrayUtil{
+    public int getSum() {
+        return sum;
+    }
 
+    public double getAvg() {
+        return avg;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    private int sum;
+    private double avg;
+    private int min;
+    private int max;
+    public ArrayUtil(int[] data){
+        this.sum=0;
+        this.max=data[0];
+        this.min=data[0];
+        for(int num:data){
+            this.sum+=num;
+            if(num>this.max)
+                this.max=num;
+            if(num<this.min)
+                this.min=num;
+        }
+        this.avg=this.sum/data.length;
+    }
+}
+```
+
+数组快速排序  
+```java
+public static int[] sort(int data[]){
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data.length - i - 1; j++) {
+                if(data[j]>data[j+1]){
+                    int temp=data[j];
+                    data[j]=data[j+1];
+                    data[j+1]=temp;
+                }
+            }
+        }
+        return data;
+    }
+```
+数组逆序
+````java
+public static int[] reverse(int data[]){
+    int head=0;
+    int tail=data.length-1;
+    for(int i=0;i<data.length/2;i++){
+        int temp=data[head];
+        data[head]=data[tail];
+        data[tail]=temp;
+        head++;
+        tail--;
+    }
+    return data;
+}
+````
 
 ## Java高级进阶

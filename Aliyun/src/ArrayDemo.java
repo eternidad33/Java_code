@@ -38,6 +38,13 @@ class ArrayUtil{
         }
         this.avg=this.sum/data.length;
     }
+
+    public static int[] initArray(){
+        int arr[]=new int[]{3,2,1,5,4,10,9,8,7,6};
+        return arr;
+    }
+
+
     public static int[] sort(int data[]){
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data.length - i - 1; j++) {
@@ -51,24 +58,36 @@ class ArrayUtil{
         return data;
     }
 
-}
-public class ArrayDemo {
-    public static void main(String[] args) {
-        int data[]=initArray();
-        ArrayUtil util=new ArrayUtil(data);
-        System.out.println("数组的和为："+util.getSum());
-        System.out.println("数组的平均值为："+util.getAvg());
-        System.out.println("数组的最大值为："+util.getMax());
-        System.out.println("数组的最小值为："+util.getMin());
-        printArray(ArrayUtil.sort(data));
-    }
-    public static int[] initArray(){
-        int arr[]=new int[]{3,2,1,5,4,10,9,8,7,6};
-        return arr;
+    public static int[] reverse(int data[]){
+        int head=0;
+        int tail=data.length-1;
+        for(int i=0;i<data.length/2;i++){
+            int temp=data[head];
+            data[head]=data[tail];
+            data[tail]=temp;
+            head++;
+            tail--;
+        }
+        return data;
     }
 
     public static void printArray(int[] temp){
         for(int t:temp)
             System.out.print(t+",");
     }
+}
+public class ArrayDemo {
+    public static void main(String[] args) {
+        int data[]=ArrayUtil.initArray();
+        ArrayUtil util=new ArrayUtil(data);
+//        System.out.println("数组的和为："+util.getSum());
+//        System.out.println("数组的平均值为："+util.getAvg());
+//        System.out.println("数组的最大值为："+util.getMax());
+//        System.out.println("数组的最小值为："+util.getMin());
+        ArrayUtil.sort(data);
+        ArrayUtil.reverse(data);
+        ArrayUtil.printArray(data);
+    }
+
+
 }
