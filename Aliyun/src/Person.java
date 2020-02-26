@@ -7,6 +7,7 @@
 public class Person {
     private String name;
     private int age;
+    public static String country="中华民国";
 
     public String getName() {
         return name;
@@ -38,6 +39,18 @@ public class Person {
     }
 
     public void tell(){
-        System.out.println("姓名："+name+"\n年龄："+age);
+        System.out.println("\n姓名："+name+"\n年龄："+age+"\n国家："+country);
+    }
+
+    public static void main(String[] args) {
+        Person per1=new Person("张三",14);
+        Person per2=new Person("李四",14);
+        Person per3=new Person("王五",14);
+        per1.country="中华人民共和国";
+        per1.tell();
+        per2.tell();
+        per3.tell();
+
+
     }
 }
