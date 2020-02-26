@@ -6,29 +6,15 @@
  */
 public class ArrayDemo {
     public static void main(String[] args) {
-//        int a[] = new int[3];
-//        for (int i=0;i<a.length;i++){
-//            System.out.println(a[i]);
-//        }
-//        a[0]=10;a[1]=20;a[2]=30;
-//        for (int teep : a) {
-//            System.out.println(teep);
-//            System.out.println("HelloWorld!");
-//        }
-//        int a[]=null;
-//        System.out.println(a[1]);//Exception in thread "main" java.lang.NullPointerException
-        int data[][]=new int[][]{{1,2,3,4,5},{6,7,8,9,10},{11,12,13,14,15}};
-//        for (int i = 0; i < data.length; i++) {
-//            for (int j = 0; j < data[i].length; j++) {
-//                System.out.print("data["+(i+1)+"]["+(j+1)+"]="+data[i][j]+'\t');
-//            }
-//            System.out.println();
-//        }
-        for (int a[]:data) {
-            for (int b:a) {
-                System.out.print(b+",");
-            }
-            System.out.println();
-        }
+        int data[]=initArray();
+        printArray(data);
+    }
+    public static int[] initArray(){
+        int arr[]=new int[]{1,2,3,4,5};
+        return arr;
+    }
+    public static void printArray(int[] temp){
+        for(int t:temp)
+            System.out.println(t);
     }
 }
