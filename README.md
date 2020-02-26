@@ -51,62 +51,9 @@ public static String getType(Object o) {
 **this()**:调用无参的构造函数  
 **this(name)**:调用参数为name的构造函数  
 
-```java
-public class Person {
-    private String name;
-    private int age;
 
-    public String getName() {
-        return name;
-    }
+this(...)必须放在首行  
 
-
-    public Person(){
-        System.out.println("产生新的对象");
-    }
-    public Person(String name){
-        this();//调用无参构造
-        this.name=name;
-    }
-    public Person(String name, int age) {
-        this(name);//调用单参构造
-        this.age = age;
-    }
-}
-```
-**this(...)**必须放在首行  
-四个参数的代码简写：
-```java
-public class EMP {
-    private long id;
-    private String name;
-    private String dept;
-    private double salary;
-
-    public EMP(long id, String name, String dept, double salary) {
-        this.id = id;
-        this.name = name;
-        this.dept = dept;
-        this.salary = salary;
-    }
-
-    public EMP(long id, String name, String dept){
-        this(id,name,dept,0.0);
-    }
-
-    public EMP(long id, String name) {
-        this(id,name,null,0.0);
-    }
-
-    public EMP(long id) {
-        this(id,null,null,0.0);
-    }
-    //必须提供无参构造
-    public EMP() {
-        this(0,null,null,0.0);
-    }
-}
-```
 
 ---
 Static属性由类名直接调用  
@@ -116,35 +63,6 @@ static方法只允许调用static属性或static方法
 static的定义的方法或属性都不是你代码编写之初所需要考虑的内容，只有在回避实例化对象描述公共属性的情况下才会考虑static定义的属性或者是方法
 
 静态代码块*最先执行*，而且只会执行一次，用于对静态属性的初始化，构造块会优于构造方法先执行
-```java
-public Person(){
-    System.out.println("【构造方法】：构造方法执行");
-}
-
-{
-    System.out.println("【构造块】：构造块执行");
-}
-
-static {
-    System.out.println("【静态代码块块】：静态代码块执行");
-}
-
-public static void main(String[] args) {
-    new Person();
-    new Person();
-    new Person();
-}
-```
-运行结果：  
-
-    【静态代码块块】：静态代码块执行
-    【构造块】：构造块执行
-    【构造方法】：构造方法执行
-    【构造块】：构造块执行
-    【构造方法】：构造方法执行
-    【构造块】：构造块执行
-    【构造方法】：构造方法执行
-
 
  
 ## Java进阶
