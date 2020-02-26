@@ -38,6 +38,19 @@ class ArrayUtil{
         }
         this.avg=this.sum/data.length;
     }
+    public static int[] sort(int data[]){
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data.length - i - 1; j++) {
+                if(data[j]>data[j+1]){
+                    int temp=data[j];
+                    data[j]=data[j+1];
+                    data[j+1]=temp;
+                }
+            }
+        }
+        return data;
+    }
+
 }
 public class ArrayDemo {
     public static void main(String[] args) {
@@ -47,15 +60,15 @@ public class ArrayDemo {
         System.out.println("数组的平均值为："+util.getAvg());
         System.out.println("数组的最大值为："+util.getMax());
         System.out.println("数组的最小值为："+util.getMin());
-
+        printArray(ArrayUtil.sort(data));
     }
     public static int[] initArray(){
-        int arr[]=new int[]{1,2,3,4,5};
+        int arr[]=new int[]{3,2,1,5,4,10,9,8,7,6};
         return arr;
     }
 
     public static void printArray(int[] temp){
         for(int t:temp)
-            System.out.println(t);
+            System.out.print(t+",");
     }
 }
