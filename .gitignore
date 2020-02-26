@@ -9,7 +9,7 @@
 *.iml
 *.iws
 *.yml
-
+out
 *.log
 *.cache
 *.diff
