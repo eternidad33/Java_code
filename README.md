@@ -148,7 +148,10 @@ public static void main(String[] args) {
 
  
 ## Java进阶
-
+### 数组
+int数组初始化默认为0  
+必须实例化数组才能使用数组下标  
+foreach循环可以避免使用下标，
 
 
 ## Java高级进阶
