@@ -134,4 +134,20 @@ class Car {
 }
 ```
 
+java源代码目录:C:\Program Files (x86)\Java\jdk-9\lib\src.zip
+
+JDK 1.8及以前的String支持类
+
+![java1.8](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/java1.8String.png)
+
+JDK 1.9的String支持类
+
+![java1.9](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/java1.9string.png)
+
+JDK 1.8及以前String类保存的是字符数组
+
+JDK 1.9及以后String类保存的是字节数组
+
+
+
 ## Java高级进阶
