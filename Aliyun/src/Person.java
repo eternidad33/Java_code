@@ -85,7 +85,5 @@ public class Person {
         Car car = new Car("BMW", 15000.00);
         car.setPer(per);
         car.getPer().tell();
-
-
     }
 }

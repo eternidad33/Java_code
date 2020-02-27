@@ -88,5 +88,50 @@ foreach遍历二维数组
 - 动态初始化：类 对象数组名称[]=new 类[长度]，每一个元素的内容都是null
 - 静态初始化：类 对象数组名称[]=new 类[]{实例化对象，实例化对象，实例化对象...}
 
+---
+对象关联
+```java
+class Car {
+    private String name;
+    private double price;
+    private Person per;
+
+    public Car(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Person getPer() {
+        return per;
+    }
+
+    public void setPer(Person per) {
+        this.per = per;
+    }
+
+    public static void main(String[] args) {
+        Person per = new Person("张三", 15);
+        Car car = new Car("BMW", 15000.00);
+        car.setPer(per);
+        car.getPer().tell();
+    }
+}
+```
 
 ## Java高级进阶
