@@ -161,7 +161,15 @@ public static void main(String[] args) {
 
     }
 ```
+将所有小写字母转换成大写
 
+```java
+String str = new String("hellojava");
+char result[] = str.toCharArray();//将字符串转化为字符数组
+for(int x=0;x<result.length;x++)
+    result[x]-=32;
+System.out.println(new String(result));
+```
 
 
 

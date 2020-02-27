@@ -6,12 +6,11 @@
  */
 public class StringDemo {
     public static void main(String[] args) {
-        String A = "hellojava";
-        String B = "hellojava";
-        String C=new String("hellojava");
-        System.out.println(A==B);//true
-        System.out.println(A==C);//false
-        System.out.println(A.equals(C));//true
 
+        String str = new String("hellojava");
+        char result[] = str.toCharArray();//将字符串转化为字符数组
+        for(int x=0;x<result.length;x++)
+            result[x]-=32;
+        System.out.println(result);
     }
 }
