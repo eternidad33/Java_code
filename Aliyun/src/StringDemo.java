@@ -5,12 +5,20 @@
  * @time 2020-02-27 9:29 pm
  */
 public class StringDemo {
+
     public static void main(String[] args) {
 
         String str = new String("hellojava");
-        char result[] = str.toCharArray();//将字符串转化为字符数组
-        for(int x=0;x<result.length;x++)
-            result[x]-=32;
-        System.out.println(result);
+        System.out.println(isNumber(str) ? "该字符串全为数字" : "该字符串不全为数字");
     }
+
+    private static boolean isNumber(String str) {
+        char result[] = str.toCharArray();
+        for (int i = 0; i < result.length; i++) {
+            if (result[i] < '0' || result[i] > '9')
+                return false;
+        }
+        return true;
+    }
+
 }
