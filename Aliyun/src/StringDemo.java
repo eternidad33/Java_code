@@ -8,17 +8,15 @@ public class StringDemo {
 
     public static void main(String[] args) {
 
-        String str = new String("hellojava");
-        System.out.println(isNumber(str) ? "该字符串全为数字" : "该字符串不全为数字");
-    }
+        String str = new String("helloJava");
+        String str1=new String("Hellojava");
+        System.out.println(str.equals(str1));//区分大小写比较
+        System.out.println(str.equalsIgnoreCase(str1));//不区分大小写比较
+        System.out.println(str.compareTo(str1));//字符串的大小的比较，'h'-'H'
+        System.out.println(str.compareToIgnoreCase(str1));//忽略大小写的字符串大小比较
+        System.out.println(str1.compareTo(str));
+        System.out.println(str1.compareToIgnoreCase(str));
 
-    private static boolean isNumber(String str) {
-        char result[] = str.toCharArray();
-        for (int i = 0; i < result.length; i++) {
-            if (result[i] < '0' || result[i] > '9')
-                return false;
-        }
-        return true;
     }
 
 }
