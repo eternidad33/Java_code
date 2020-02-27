@@ -148,6 +148,40 @@ JDK 1.8及以前String类保存的是字符数组
 
 JDK 1.9及以后String类保存的是字节数组
 
+String对象的比较
+
+```java
+public static void main(String[] args) {
+        String A = "hellojava";
+        String B = "hellojava";
+        String C=new String("hellojava");
+        System.out.println(A==B);//true
+        System.out.println(A==C);//false
+        System.out.println(A.equals(C));//true
+
+    }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Java高级进阶
