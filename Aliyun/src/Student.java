@@ -6,7 +6,10 @@
  */
 public class Student extends Person{
     private String school;
-
+    public Student(){
+        super();//调用父类的构造方法，写与不写都一样
+        System.out.println("【Student】被实例化");
+    }
     public String getSchool() {
         return school;
     }

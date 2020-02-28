@@ -8,7 +8,10 @@
 public class Person {
     private String name;
     private int age;
+    public Person(){
 
+        System.out.println("【Person】被实例化");
+    }
     public String getName() {
         return name;
     }
