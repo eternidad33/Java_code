@@ -256,6 +256,9 @@ class A{}
 class B extends A{}
 class C extends B{}
 ```
+- 父类的私有方法不存在覆写
+- 子类调用有父类覆写的方法要加super
+
 
 
 ## Java高级进阶
