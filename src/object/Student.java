@@ -16,6 +16,18 @@ public class Student extends Person{
         super(name,age);
         this.school=school;
     }
+    
+    @Override
+    public int getAge() {
+        System.out.println("子类重写");
+        return super.getAge();
+    }
+
+    @Override
+    public void getInfo(){
+        super.getInfo();
+        System.out.println("子类覆写方法被调用");
+    }
     public String getSchool() {
         return school;
     }
@@ -26,7 +38,7 @@ public class Student extends Person{
 
     public static void main(String[] args) {
         Student stu=new Student("小明");
-
+        stu.getInfo();
         System.out.println("姓名："+stu.getName()+"，年龄："+stu.getAge()+"，学校："+stu.getSchool());
     }
 }
