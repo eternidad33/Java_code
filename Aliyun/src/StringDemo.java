@@ -8,17 +8,9 @@ public class StringDemo {
 
     public static void main(String[] args) {
 
-        String str = new String("helloJava");
-        System.out.println(str.contains("hello"));//判断字符串中是否含有hello
-        System.out.println(str.contains("Python"));
-        System.out.println(str.indexOf("Java"));//查询Java是否存在于str中，存在返回首字母索引位置，不存在返回-1
-        System.out.println(str.indexOf("python"));
-        System.out.println(str.lastIndexOf("Java"));//从后向前查询
-        System.out.println(str.lastIndexOf('a',7));
-        String str2=new String("www.baidu.com");
-        System.out.println(str2.endsWith("com"));//判断是否以com结尾
-        System.out.println(str2.startsWith("www"));//判断是否以www开头
-        System.out.println(str2.startsWith(".",3));
+        String str = new String("helloJava,Java");
+        System.out.println(str.replaceAll("Java", "Python"));//将全部的Java替换成Python
+        System.out.println(str.replaceFirst("Java", "Python"));//将第一个Java替换成Python
     }
 
 }

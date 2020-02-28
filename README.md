@@ -220,7 +220,12 @@ public static void main(String[] args) {
     System.out.println(str2.startsWith(".",3));
 }
 ```
-
+字符串的替换
+```java
+String str = new String("helloJava,Java");
+System.out.println(str.replaceAll("Java", "Python"));//将全部的Java替换成Python
+System.out.println(str.replaceFirst("Java", "Python"));//将第一个Java替换成Python
+```
 
 
 
