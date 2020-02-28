@@ -15,32 +15,12 @@ Java 1.9之后才有的**Jshell**
 
 **int的取值范围**为-2147483648到2147483647
 
-```java
-public static void main(String args[]) {
-    final int max = Integer.MAX_VALUE;
-    final int min = Integer.MIN_VALUE;
-    System.out.println(max); // 2147483647
-    System.out.println(min); // -2147483648
-    System.out.println(max + 1); // -2147483648
-    System.out.println(max + 2); // -2147483647
-    System.out.println(min - 1); // 2147483647
-}
-```
+
 
 大写字母范围：A(65)~Z(90)  
 小写字母范围：a(97)~z(122)  
 数值范围：'0'(48)~'9'(57)  
 
-Java 获取变量类型
-```java
-public static void main(final String args[]) {
-		boolean a = false;
-		System.out.println(getType(a));
-}
-public static String getType(Object o) {
-	return o.getClass().toString();
-}
-```
 ---
 **this**关键字  
 **this()**:调用无参的构造函数  
@@ -88,51 +68,7 @@ foreach遍历二维数组
 - 动态初始化：类 对象数组名称[]=new 类[长度]，每一个元素的内容都是null
 - 静态初始化：类 对象数组名称[]=new 类[]{实例化对象，实例化对象，实例化对象...}
 
----
-### 对象关联
-```java
-class Car {
-    private String name;
-    private double price;
-    private Person per;
 
-    public Car(String name, double price) {
-        this.name = name;
-        this.price = price;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Person getPer() {
-        return per;
-    }
-
-    public void setPer(Person per) {
-        this.per = per;
-    }
-
-    public static void main(String[] args) {
-        Person per = new Person("张三", 15);
-        Car car = new Car("BMW", 15000.00);
-        car.setPer(per);
-        car.getPer().tell();
-    }
-}
-```
 ---
 ### String
 java源代码目录:C:\Program Files (x86)\Java\jdk-9\lib\src.zip
