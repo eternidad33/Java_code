@@ -227,8 +227,27 @@ public class Student extends Person{
     }
 }
 ```
-
-
+子类被实例化时先调用分类的构造方法
+```java
+public Person(){
+    System.out.println("【Person】被实例化");
+}
+public Student(){
+    super();//调用父类的构造方法，写与不写都一样
+    System.out.println("【Student】被实例化");
+}
+```
+super(...)必须放在首行，this(...)也必须放在首行，所以两者不可同时出现
+```java
+    public Student(String name,int age ,String school){
+        super(name,age);
+        this.school=school;
+    }
+    public static void main(String[] args) {
+        Student stu=new Student("小明",15,"河北大学");
+        System.out.println("姓名："+stu.getName()+"，年龄："+stu.getAge()+"，学校："+stu.getSchool());
+    }
+```
 
 
 
