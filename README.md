@@ -227,8 +227,30 @@ System.out.println(str.replaceAll("Java", "Python"));//将全部的Java替换成
 System.out.println(str.replaceFirst("Java", "Python"));//将第一个Java替换成Python
 ```
 
-
-
+字符串的拆分
+```java
+String str = new String("hello Java hello Java");
+String[] result = str.split(" ");//以空格全部拆分，返回字符串数组
+for (int i = 0; i < result.length; i++) {
+    System.out.println(result[i]);
+}
+String[] resulta = str.split(" ",2);//以空格拆分成2个，返回字符串数组
+for (int i = 0; i < resulta.length; i++) {
+    System.out.println(resulta[i]);
+}
+String str1="127.0.0.1";
+String[] re=str1.split("\\.");//拆不开的情况要用"\\"进行转义
+for (int i = 0; i < re.length; i++) {
+    System.out.println(re[i]);
+}
+```
+字符串的截取
+```java
+String user="2020111-photo-秦始皇.png";
+int startIndex=user.indexOf("-",user.indexOf("photo"))+1;
+int endIndex=user.lastIndexOf(".");
+System.out.println(user.substring(startIndex,endIndex));
+```
 
 
 

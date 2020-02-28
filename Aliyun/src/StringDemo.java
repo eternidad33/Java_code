@@ -8,9 +8,12 @@ public class StringDemo {
 
     public static void main(String[] args) {
 
-        String str = new String("helloJava,Java");
-        System.out.println(str.replaceAll("Java", "Python"));//将全部的Java替换成Python
-        System.out.println(str.replaceFirst("Java", "Python"));//将第一个Java替换成Python
+        String user="2020111-photo-秦始皇.png";
+        int startIndex=user.indexOf("-",user.indexOf("photo"))+1;
+        int endIndex=user.lastIndexOf(".");
+        System.out.println(user.substring(startIndex,endIndex));
+
+
     }
 
 }
