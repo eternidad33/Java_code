@@ -141,9 +141,9 @@ format是一个静态方法,直接通过**String类调用**`String.format("姓�
 
 
 ### 继承
-`public class Student extends Person`Student类继承Person所有共有的属性和方法 
+`public class object.Student extends object.Person`Student类继承Person所有共有的属性和方法 
 ```java
-public class Student extends Person{
+import object.Person;public class Student extends Person{
     private String school;
 
     public String getSchool() {
@@ -155,7 +155,7 @@ public class Student extends Person{
     }
 
     public static void main(String[] args) {
-        Student stu=new Student();
+        object.Student stu=new object.Student();
         stu.setName("小明");
         stu.setAge(15);
         stu.setSchool("河北大学");
@@ -165,22 +165,22 @@ public class Student extends Person{
 ```
 子类被实例化时先调用分类的构造方法
 ```java
-public Person(){
-    System.out.println("【Person】被实例化");
+public object.Person(){
+    System.out.println("【object.Person】被实例化");
 }
-public Student(){
+public object.Student(){
     super();//调用父类的构造方法，写与不写都一样
-    System.out.println("【Student】被实例化");
+    System.out.println("【object.Student】被实例化");
 }
 ```
 super(...)必须放在首行，this(...)也必须放在首行，所以两者不可同时出现
 ```java
-    public Student(String name,int age ,String school){
+    public object.Student(String name,int age ,String school){
         super(name,age);
         this.school=school;
     }
     public static void main(String[] args) {
-        Student stu=new Student("小明",15,"河北大学");
+        object.Student stu=new object.Student("小明",15,"河北大学");
         System.out.println("姓名："+stu.getName()+"，年龄："+stu.getAge()+"，学校："+stu.getSchool());
     }
 ```

@@ -1,3 +1,5 @@
+package object;
+
 /**
  * @author Vigilr
  * @project Java_code
