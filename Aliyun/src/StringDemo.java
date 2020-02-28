@@ -9,14 +9,16 @@ public class StringDemo {
     public static void main(String[] args) {
 
         String str = new String("helloJava");
-        String str1=new String("Hellojava");
-        System.out.println(str.equals(str1));//区分大小写比较
-        System.out.println(str.equalsIgnoreCase(str1));//不区分大小写比较
-        System.out.println(str.compareTo(str1));//字符串的大小的比较，'h'-'H'
-        System.out.println(str.compareToIgnoreCase(str1));//忽略大小写的字符串大小比较
-        System.out.println(str1.compareTo(str));
-        System.out.println(str1.compareToIgnoreCase(str));
-
+        System.out.println(str.contains("hello"));//判断字符串中是否含有hello
+        System.out.println(str.contains("Python"));
+        System.out.println(str.indexOf("Java"));//查询Java是否存在于str中，存在返回首字母索引位置，不存在返回-1
+        System.out.println(str.indexOf("python"));
+        System.out.println(str.lastIndexOf("Java"));//从后向前查询
+        System.out.println(str.lastIndexOf('a',7));
+        String str2=new String("www.baidu.com");
+        System.out.println(str2.endsWith("com"));//判断是否以com结尾
+        System.out.println(str2.startsWith("www"));//判断是否以www开头
+        System.out.println(str2.startsWith(".",3));
     }
 
 }
