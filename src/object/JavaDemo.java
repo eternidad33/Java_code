@@ -6,22 +6,53 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-class Channel{
-    public void Connect(){
-        System.out.println("============Channel================");
+class base {
+    public void print() {
+        System.out.println("我是父类");
+    }
+
+    public void f() {
+        System.out.println("父类特有的方法");
     }
 }
-class DatabaseChannel extends Channel{
+
+class son1 extends base {
     @Override
-    public void Connect() {
-        System.out.println("=========DatabaseChannel============");
+    public void print() {
+        System.out.println("我是子类1");
+    }
+
+    public void print1() {
+        System.out.println("父类没有的方法1");
+    }
+}
+
+class son2 extends base {
+    @Override
+    public void print() {
+        System.out.println("我是子类2");
     }
 }
 
 public class JavaDemo {
-    @SuppressWarnings({"deprecated"})
+
     public static void main(String[] args) {
-        DatabaseChannel dba=new DatabaseChannel();
-        dba.Connect();
+
+        base f = new son1();  //向上转型
+        f.print(); //打印我是子类
+        if (f instanceof son1) {
+            son1 s = (son1) f;//向下转型
+            s.print1();
+        }
+        fun(new son2());
+        fun(new son1());
+//        System.out.println(f instanceof base);
+//        System.out.println(f instanceof son1);
+//        System.out.println(s instanceof base);
+//        System.out.println(s instanceof son1);
+    }
+
+    public static void fun(base b) {
+        b.print();
     }
 }

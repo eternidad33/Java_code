@@ -211,5 +211,45 @@ Annotation注解
 @Override 准确覆写  
 @Deprecated 代表过时的类或方法  
 @SuppressWarnings 压制警告  
+```java
+class Channel{
+    public void Connect(){
+        System.out.println("============Channel================");
+    }
+}
+class DatabaseChannel extends Channel{
+    @Override
+    public void Connect() {
+        System.out.println("=========DatabaseChannel============");
+    }
+}
+
+public class JavaDemo {
+    @SuppressWarnings({"deprecated"})
+    public static void main(String[] args) {
+        DatabaseChannel dba=new DatabaseChannel();
+        dba.Connect();
+    }
+}
+```
+
+向上转型`base f = new son()`可以调用父类的方法和子类中重写父类的方法
+
+向下转型`son1 s=(son)f`不安全
+
+instanceof 
+
+instanceof为了保证向下转型的正确性，用于在转型之前进行判断，判断某个实例是否是某个类的对象
+
+```java
+base f = new son1();  //向上转型
+f.print(); //打印我是子类
+if (f instanceof son1) {
+    son1 s = (son1) f;//向下转型
+    s.print1();
+}
+```
+
+
 
 ## Java高级进阶
