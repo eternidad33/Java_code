@@ -261,8 +261,26 @@ A a=new A();
 System.out.println(a);
 System.out.println(a.toString());
 ```
-对象比较equals()
-
+1. 对象比较equals()
+2. 判断对象是否为null
+3. 判断是不是同一地址
+4. 判断obj是否转换为person
+5. 判断内容是否相同
+```java
+    public boolean equals(Object obj) {
+        if (obj == null) {//判断对象是否为null
+            return false;
+        }
+        if (this == obj) {//判断是不是同一地址
+            return true;
+        }
+        if (!(obj instanceof person)) {//判断obj是否转换为person
+            return false;
+        }
+        person per = (person) obj;
+        return this.name.equals(per.name) && this.age == this.age;
+    }
+```
 
 
 ## Java高级进阶
