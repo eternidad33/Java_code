@@ -261,6 +261,8 @@ A a=new A();
 System.out.println(a);
 System.out.println(a.toString());
 ```
+对象比较equals()
+
 
 
 ## Java高级进阶
