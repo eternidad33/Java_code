@@ -250,6 +250,17 @@ if (f instanceof son1) {
 }
 ```
 
+Object类
+
+Object类是所有类型的父类，所以Object类可以接收所有子类的对象
+
+`toString()`是Object自带的方法，所有继承类都可以使用
+
+```java
+A a=new A();
+System.out.println(a);
+System.out.println(a.toString());
+```
 
 
 ## Java高级进阶

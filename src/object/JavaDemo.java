@@ -1,58 +1,37 @@
 package object;
 
+import com.sun.org.apache.xerces.internal.xinclude.XPointerSchema;
+
 /**
  * @author Vigilr
  * @project Java_code
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-class base {
-    public void print() {
-        System.out.println("我是父类");
-    }
-
-    public void f() {
-        System.out.println("父类特有的方法");
-    }
+class A{
+public String name;
+public int id;
+public A(){
+    name="vigilr";
+    id=1;
 }
 
-class son1 extends base {
-    @Override
-    public void print() {
-        System.out.println("我是子类1");
-    }
+@Override
+public String toString(){
 
-    public void print1() {
-        System.out.println("父类没有的方法1");
-    }
+    return "name:"+this.name+",id: "+this.id;
 }
-
-class son2 extends base {
-    @Override
-    public void print() {
-        System.out.println("我是子类2");
-    }
 }
-
 public class JavaDemo {
-
     public static void main(String[] args) {
-
-        base f = new son1();  //向上转型
-        f.print(); //打印我是子类
-        if (f instanceof son1) {
-            son1 s = (son1) f;//向下转型
-            s.print1();
+        Object obj=new A();
+        if(obj instanceof A){
+            A a=(A)obj;
+            System.out.println("向下转型完毕");
         }
-        fun(new son2());
-        fun(new son1());
-//        System.out.println(f instanceof base);
-//        System.out.println(f instanceof son1);
-//        System.out.println(s instanceof base);
-//        System.out.println(s instanceof son1);
+        A a=new A();
+        System.out.println(a);
+        System.out.println(a.toString());//object.A@16d3586
     }
 
-    public static void fun(base b) {
-        b.print();
-    }
 }
