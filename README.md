@@ -206,5 +206,10 @@ class C extends B{}
 
 fanal代表不能被覆写的方法，常量
 
+Annotation注解
+
+@Override 准确覆写  
+@Deprecated 代表过时的类或方法  
+@SuppressWarnings 压制警告  
 
 ## Java高级进阶
