@@ -274,6 +274,12 @@ abstract class Action{
 ```
 > 抽象类中可以使用普通方法调用抽象方法
 
+### 包装类
+`Int temp = new Int(10);`装箱，将基本数据类型保存在包装类中
 
+`int x = temp.intValue();`拆箱，从包装类中获取基本数据类型
+
+1. 对象型的包装类，Boolen,Character
+2. 数值型的包装类,Byte,Short,Integer,Long,Float,Double
 
 ## Java高级进阶
