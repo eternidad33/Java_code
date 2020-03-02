@@ -207,71 +207,12 @@ Object类是所有类型的父类，所以Object类可以接收所有子类的�
 2. 抽象类的子类（非抽象类）一定要覆写抽象类中的全部抽象方法
 3. 抽象类的对象实例化可以通过子类向上转型的方式完成
 
-```java
-abstract class Message{
-    private String type;
-    public abstract String getInfo();
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-}
-class DatabaseMessage extends Message{
-
-    @Override
-    public String getInfo() {
-        return "数据库连接信息";
-    }
-}
-public class JavaDemo {
-    public static void main(String[] args) {
-        Message msg=new DatabaseMessage();
-        System.out.println(msg.getInfo());
-    }
-
-}
-
-```
 
 > 抽象类自己无法直接实例化
 
 `final`不允许有子类，`abstract`必须有子类
-```java
-abstract class Action{
-    public static final int EAT=1;
-    public static final int WORK=3;
-    public static final int SLEEP=5;
-    public void command(int code){
-        switch (code){
-            case EAT:{
-                this.eat();
-                break;
-            }
-            case SLEEP:{
-                this.sleep();
-                break;
-            }
-            case WORK:{
-                this.work();
-                break;
-            }
-            case EAT+SLEEP+WORK:{
-                this.eat();
-                this.work();
-                this.sleep();
-                break;
-            }
-        }
-    }
-    public abstract void eat();
-    public abstract void sleep();
-    public abstract void work();
-}
-```
+
 > 抽象类中可以使用普通方法调用抽象方法
 
 ### 包装类
@@ -284,23 +225,9 @@ abstract class Action{
 
 基本的装箱与拆箱操作
 
-```java
-Integer obj=new Integer(10);//装箱
-int x=obj.intValue();//拆箱
-System.out.println(x*x);
-Double d=new Double(10.1);
-double num=d.doubleValue();
-System.out.println(num);
-Boolean b=new Boolean(false);
-boolean bb=b.booleanValue();
-System.out.println(bb);
-```
+
 jdk1.5之后可以实现自动装箱与拆箱操作，包装类可以直接参与数学运算
-```java
-Integer i=10;
-i++;
-System.out.println(i);//11
-```
+
 
 
 ## Java高级进阶
