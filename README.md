@@ -195,6 +195,52 @@ Object类是所有类型的父类，所以Object类可以接收所有子类的�
 4. 判断obj是否转换为person
 5. 判断内容是否相同
 
+### 抽象类
+
+抽象方法所在的类必须为抽象类，抽象类必须用`abstract`关键字来定义
+
+抽象类就是在普通类上追加了抽象方法
+
+抽象类是无法被实例化的
+
+1. 抽象类必须提供子类
+2. 抽象类的子类（非抽象类）一定要覆写抽象类中的全部抽象方法
+3. 抽象类的对象实例化可以通过子类向上转型的方式完成
+
+```java
+abstract class Message{
+    private String type;
+    public abstract String getInfo();
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+}
+class DatabaseMessage extends Message{
+
+    @Override
+    public String getInfo() {
+        return "数据库连接信息";
+    }
+}
+public class JavaDemo {
+    public static void main(String[] args) {
+        Message msg=new DatabaseMessage();
+        System.out.println(msg.getInfo());
+    }
+
+}
+
+```
+
+> 抽象类自己无法直接实例化
+
+`final`不允许有子类，`abstract`必须有子类
+
 
 
 ## Java高级进阶

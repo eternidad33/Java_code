@@ -8,8 +8,9 @@ package object;
  */
 class StringUtil{
     public static String initCap(String str){//将字符串首字母大写，其余字母小写
-        if(str==null||"".equals(str))
+        if(str==null||"".equals(str)) {
             return str;
+        }
         return str.substring(0,1).toUpperCase()+str.substring(1).toLowerCase();
     }
 }
