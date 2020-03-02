@@ -240,6 +240,39 @@ public class JavaDemo {
 > 抽象类自己无法直接实例化
 
 `final`不允许有子类，`abstract`必须有子类
+```java
+abstract class Action{
+    public static final int EAT=1;
+    public static final int WORK=3;
+    public static final int SLEEP=5;
+    public void command(int code){
+        switch (code){
+            case EAT:{
+                this.eat();
+                break;
+            }
+            case SLEEP:{
+                this.sleep();
+                break;
+            }
+            case WORK:{
+                this.work();
+                break;
+            }
+            case EAT+SLEEP+WORK:{
+                this.eat();
+                this.work();
+                this.sleep();
+                break;
+            }
+        }
+    }
+    public abstract void eat();
+    public abstract void sleep();
+    public abstract void work();
+}
+```
+> 抽象类中可以使用普通方法调用抽象方法
 
 
 
