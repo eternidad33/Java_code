@@ -282,4 +282,25 @@ abstract class Action{
 1. 对象型的包装类，Boolen,Character
 2. 数值型的包装类,Byte,Short,Integer,Long,Float,Double
 
+基本的装箱与拆箱操作
+
+```java
+Integer obj=new Integer(10);//装箱
+int x=obj.intValue();//拆箱
+System.out.println(x*x);
+Double d=new Double(10.1);
+double num=d.doubleValue();
+System.out.println(num);
+Boolean b=new Boolean(false);
+boolean bb=b.booleanValue();
+System.out.println(bb);
+```
+jdk1.5之后可以实现自动装箱与拆箱操作，包装类可以直接参与数学运算
+```java
+Integer i=10;
+i++;
+System.out.println(i);//11
+```
+
+
 ## Java高级进阶
