@@ -5,6 +5,7 @@
 
 .idea
 /idea/
+.vscode/
 *.ipr
 *.iml
 *.iws

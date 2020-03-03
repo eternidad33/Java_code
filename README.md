@@ -275,4 +275,59 @@ USB接口设计
 2. 子类必须覆写抽象类或接口的全部抽象方法
 3. 通过子类的向上转型实现抽象类或接口的对象实例化
 
+### 泛型
+基本数据类型→包装类型→`Object`类
+```java
+class Point{
+    private Object x;
+    private Object y;
+    public Object getX(){
+        return this.x;
+    }
+    public Object getY(){
+        return this.y;
+    }
+    public void setX(Object x){
+        this.x=x;
+    }
+    public  void setY(Object y){
+        this.y=y;
+    }
+}
+public class JavaDemo {
+    public static void main(String[] args) {
+        Point p1=new Point();
+        p1.setX(12);//自动装箱
+        p1.setY(21.2);
+        System.out.println("P1点的坐标为（"+p1.getX()+","+p1.getY()+")");
+    }
+
+}
+```
+向上转型成`Object`类，容易出现`ClassCastException`异常
+
+> 1. 泛型之中只允许设置引用类型，如果要操作基本类型必须使用包装类
+> 2. 泛型对象实例化对象可以简化为`Point<Integer> p1=new Point<>();`
+
+```java
+class Point <T>{
+    private T x;
+    private T y;
+    public T getX(){
+        return this.x;
+    }
+    public T getY(){
+        return this.y;
+    }
+    public void setX(T x){
+        this.x=x;
+    }
+    public  void setY(T y){
+        this.y=y;
+    }
+}
+```
+
+
+---
 ## Java高级进阶
