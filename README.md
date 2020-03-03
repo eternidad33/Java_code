@@ -243,11 +243,6 @@ jdk1.5之后可以实现自动装箱与拆箱操作，包装类可以直接参�
 >方法不写访问权限也是`public`，不是`default`
 
 接口可以通过`extends`集成多个父接口
-```java
-interface IMessage{}
-interface IChannel{}
-interface Iservice extends IMessage,IChannel{}
-```
 
 接口的使用：
 1. 进行标准设置
@@ -257,74 +252,15 @@ interface Iservice extends IMessage,IChannel{}
 JDK1.8之前，在进行设计时，一般子类不直接继承接口，中间加一个过渡抽象类
 
 接口的方法加上`public default`代表普通方法
-```java
-interface IMessage {
-    public static final String M = "Message";
 
-    public default void getInfo() {//default代表该方法为普通方法
-        System.out.println("hel");
-    }
-}
-```
 USB接口设计
-```java
-interface IUsb{
-    public boolean check();
-    public void work();
-}
 
-class computer{
-    public void plugin(IUsb usb){
-        if(usb.check()){
-            usb.work();
-        }else {
-            System.out.println("该设备不能正常工作");
-        }
-    }
-}
-```
 ### 工厂设计模式
-```java
-class Factory{
-    public static IUsb getInstance(String classname){
-        if("Keyboard".equals(classname)){
-            return new Keyboard();
-        }else if ("print".equals(classname)){
-            return new print();
-        }else {
-            return null;
-        }
-    }
-}
-```
+
 ### 代理设计模式
 
 一个借口提供两个子类，其中一个是真实业务操作类，另一个是代理业务操作类
-```java
-class EatProxy implements IEat {
-    private IEat eat;
 
-    public void prepare() {
-        System.out.println("1. 采购食材");
-        System.out.println("2. 处理食材");
-    }
-
-    public void clear() {
-        System.out.println("3. 清理碗筷");
-    }
-
-    public EatProxy(IEat eat) {
-        this.eat = eat;
-    }
-
-    @Override
-    public void get() {
-        this.prepare();
-        this.eat.get();
-        this.clear();
-    }
-}
-```
 ### 接口与抽象类的比较
 |接口|抽象类|
 |:---:|:---:|
