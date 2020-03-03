@@ -355,6 +355,44 @@ public class JavaDemo {
 ```
 `<T extends 类>`:设置泛型的上限
 `<T super 类>`:设置泛型的下限
+### 泛型接口
+```java
+interface IMessge<T> {
+    public String content(T t);
+}
+```
+子类实现泛型接口两种方式：
+1. 在子类之中继续设置泛型定义
+    ```java
+    class Radio<T> implements IMessge<T> {
+        @Override
+        public String content(T t) {
+            return "hello " + t;
+        }
+    }
+    public class JavaDemo {
+        public static void main(String[] args) {
+            IMessge<String> msg = new Radio<>();
+            System.out.println(msg.content("java"));
+        }
+    }
+    ```
+2. 子类实现父接口是直接定义泛型类型
+    ```java
+    class Radio implements IMessge<String> {
+        @Override
+        public String content(String t) {
+            return "hello " + t;
+        }
+    }
+    public class JavaDemo {
+        public static void main(String[] args) {
+            IMessge<String> msg = new Radio();
+            System.out.println(msg.content("java"));
+        }
+    }
+    ```
+
 
 ---
 ## Java高级进阶

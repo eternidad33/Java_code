@@ -7,26 +7,20 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-class Message <T>{
-     private T content;
+interface IMessge<T> {
+    public String content(T t);
+}
 
-    public T getContent() {
-        return content;
-    }
-
-    public void setContent(T content) {
-        this.content = content;
+class Radio implements IMessge<String> {
+    @Override
+    public String content(String t) {
+        return "hello " + t;
     }
 }
+
 public class JavaDemo {
     public static void main(String[] args) {
-        Message<String> msg=new Message<>();
-        msg.setContent("Vigilr");
-        fun(msg);
+        IMessge<String> msg = new Radio();
+        System.out.println(msg.content("java"));
     }
-    public static void fun(Message<? super String> temp){
-//        temp.setContent(123);//通配符？可以使泛型对象不能修改，但可以访问
-        System.out.println(temp.getContent());
-    }
-
 }
