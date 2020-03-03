@@ -7,12 +7,12 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-
+interface IMessage{}
+interface IChannel{}
+interface Iservice extends IMessage,IChannel{}
 public class JavaDemo {
     public static void main(String[] args) {
-        Integer i=10;
-        i++;
-        System.out.println(i);//11
+
     }
 
 }
