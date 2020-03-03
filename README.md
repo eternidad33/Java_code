@@ -283,4 +283,18 @@ class computer{
     }
 }
 ```
+工厂设计模式
+```java
+class Factory{
+    public static IUsb getInstance(String classname){
+        if("Keyboard".equals(classname)){
+            return new Keyboard();
+        }else if ("print".equals(classname)){
+            return new print();
+        }else {
+            return null;
+        }
+    }
+}
+```
 ## Java高级进阶

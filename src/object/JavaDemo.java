@@ -45,11 +45,21 @@ class print implements IUsb{
         System.out.println("打印机开始工作");
     }
 }
+class Factory{
+    public static IUsb getInstance(String classname){
+        if("Keyboard".equals(classname)){
+            return new Keyboard();
+        }else if ("print".equals(classname)){
+            return new print();
+        }else {
+            return null;
+        }
+    }
+}
 public class JavaDemo {
     public static void main(String[] args) {
-        computer a=new computer();
-        a.plugin(new Keyboard());//插入键盘
-        a.plugin(new print());//插入打印机
+        IUsb u=Factory.getInstance("print");
+        u.work();
     }
 
 }
