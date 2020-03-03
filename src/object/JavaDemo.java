@@ -7,20 +7,15 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-interface IMessge<T> {
-    public String content(T t);
-}
-
-class Radio implements IMessge<String> {
-    @Override
-    public String content(String t) {
-        return "hello " + t;
-    }
-}
 
 public class JavaDemo {
     public static void main(String[] args) {
-        IMessge<String> msg = new Radio();
-        System.out.println(msg.content("java"));
+        Integer nums[]=fun(1,2,3);
+        for (int num:nums){
+            System.out.println(num);
+        }
+    }
+    public static <T>T[] fun(T ... args){
+        return args;
     }
 }
