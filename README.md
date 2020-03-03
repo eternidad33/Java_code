@@ -283,7 +283,7 @@ class computer{
     }
 }
 ```
-工厂设计模式
+### 工厂设计模式
 ```java
 class Factory{
     public static IUsb getInstance(String classname){
@@ -297,4 +297,45 @@ class Factory{
     }
 }
 ```
+### 代理设计模式
+
+一个借口提供两个子类，其中一个是真实业务操作类，另一个是代理业务操作类
+```java
+class EatProxy implements IEat {
+    private IEat eat;
+
+    public void prepare() {
+        System.out.println("1. 采购食材");
+        System.out.println("2. 处理食材");
+    }
+
+    public void clear() {
+        System.out.println("3. 清理碗筷");
+    }
+
+    public EatProxy(IEat eat) {
+        this.eat = eat;
+    }
+
+    @Override
+    public void get() {
+        this.prepare();
+        this.eat.get();
+        this.clear();
+    }
+}
+```
+### 接口与抽象类的比较
+|接口|抽象类|
+|:---:|:---:|
+|interface 接口名称{}|abstract class 抽象类名称{}|
+|抽象方法，全局常量，普通方法，静态方法|构造，普通方法，静态方法，全局变量，成员|
+|只有public权限|可以使用各类权限|
+|子类通过`implements`关键字可以继承多个接口|子类通过`extends`关键字继承一个抽象类|
+|接口不允许结成抽象类，可以继承多个父接口|抽象类可以实现若干个接口|
+
+使用时的共同点
+1. 抽象类或接口必须定义子类
+2. 子类必须覆写抽象类或接口的全部抽象方法
+3. 通过子类的向上转型实现抽象类或接口的对象实例化
 ## Java高级进阶

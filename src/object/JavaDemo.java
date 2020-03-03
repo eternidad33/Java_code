@@ -7,59 +7,45 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-interface IUsb{
-    public boolean check();
-    public void work();
+interface IEat {
+    public void get();
 }
 
-class computer{
-    public void plugin(IUsb usb){
-        if(usb.check()){
-            usb.work();
-        }else {
-            System.out.println("该设备不能正常工作");
-        }
+class RealEat implements IEat {
+    @Override
+    public void get() {
+        System.out.println("开始吃");
     }
 }
-class Keyboard implements IUsb{
 
-    @Override
-    public boolean check() {
-        return true;
+class EatProxy implements IEat {
+    private IEat eat;
+
+    public void prepare() {
+        System.out.println("1. 采购食材");
+        System.out.println("2. 处理食材");
     }
 
-    @Override
-    public void work() {
-        System.out.println("键盘开始打字");
+    public void clear() {
+        System.out.println("3. 清理碗筷");
     }
-}
-class print implements IUsb{
 
-    @Override
-    public boolean check() {
-        return false;
+    public EatProxy(IEat eat) {
+        this.eat = eat;
     }
 
     @Override
-    public void work() {
-        System.out.println("打印机开始工作");
+    public void get() {
+        this.prepare();
+        this.eat.get();
+        this.clear();
     }
 }
-class Factory{
-    public static IUsb getInstance(String classname){
-        if("Keyboard".equals(classname)){
-            return new Keyboard();
-        }else if ("print".equals(classname)){
-            return new print();
-        }else {
-            return null;
-        }
-    }
-}
+
 public class JavaDemo {
     public static void main(String[] args) {
-        IUsb u=Factory.getInstance("print");
-        u.work();
+        IEat eat = new EatProxy(new RealEat());
+        eat.get();
     }
 
 }
