@@ -353,7 +353,8 @@ public class JavaDemo {
 
 }
 ```
-
+`<T extends 类>`:设置泛型的上限
+`<T super 类>`:设置泛型的下限
 
 ---
 ## Java高级进阶

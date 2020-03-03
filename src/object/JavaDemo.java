@@ -24,7 +24,7 @@ public class JavaDemo {
         msg.setContent("Vigilr");
         fun(msg);
     }
-    public static void fun(Message<?> temp){
+    public static void fun(Message<? super String> temp){
 //        temp.setContent(123);//通配符？可以使泛型对象不能修改，但可以访问
         System.out.println(temp.getContent());
     }
