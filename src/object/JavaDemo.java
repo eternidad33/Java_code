@@ -7,28 +7,26 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-class Point <T>{
-    private T x;
-    private T y;
-    public T getX(){
-        return this.x;
+class Message <T>{
+     private T content;
+
+    public T getContent() {
+        return content;
     }
-    public T getY(){
-        return this.y;
-    }
-    public void setX(T x){
-        this.x=x;
-    }
-    public  void setY(T y){
-        this.y=y;
+
+    public void setContent(T content) {
+        this.content = content;
     }
 }
 public class JavaDemo {
     public static void main(String[] args) {
-        Point<Integer> p1=new Point<>();
-        p1.setX(12);//自动装箱
-        p1.setY(21);
-        System.out.println("P1点的坐标为（"+p1.getX()+","+p1.getY()+")");
+        Message<String> msg=new Message<>();
+        msg.setContent("Vigilr");
+        fun(msg);
+    }
+    public static void fun(Message<?> temp){
+//        temp.setContent(123);//通配符？可以使泛型对象不能修改，但可以访问
+        System.out.println(temp.getContent());
     }
 
 }
