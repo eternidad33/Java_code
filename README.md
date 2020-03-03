@@ -266,5 +266,21 @@ interface IMessage {
     }
 }
 ```
+USB接口设计
+```java
+interface IUsb{
+    public boolean check();
+    public void work();
+}
 
+class computer{
+    public void plugin(IUsb usb){
+        if(usb.check()){
+            usb.work();
+        }else {
+            System.out.println("该设备不能正常工作");
+        }
+    }
+}
+```
 ## Java高级进阶
