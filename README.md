@@ -254,4 +254,17 @@ interface Iservice extends IMessage,IChannel{}
 2. 表示一种操作的能力
 3. 暴露远程方法视图
 
+JDK1.8之前，在进行设计时，一般子类不直接继承接口，中间加一个过渡抽象类
+
+接口的方法加上`public default`代表普通方法
+```java
+interface IMessage {
+    public static final String M = "Message";
+
+    public default void getInfo() {//default代表该方法为普通方法
+        System.out.println("hel");
+    }
+}
+```
+
 ## Java高级进阶
