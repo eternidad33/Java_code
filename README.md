@@ -311,7 +311,7 @@ USB接口设计
 
 `import util.Message;`导入其他包的类
 
-
+当导入的几个包中出现重名的类时，定义类要用完整的类名称`Message msg=new util.Message();`。
 
 ---
 ## Java高级进阶
