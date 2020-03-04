@@ -6,11 +6,10 @@ package object;
  * @package object
  * @time 2020-03-04 10:52 am
  */
-import util.*;//导入其他包的类
+import static util.Math.*;
 public class test {
     public static void main(String[] args) {
-        Message msg=new util.Message();
-        msg.setContent("hello java");
-        System.out.println(msg.getContent());
+        System.out.println(add(1,2,3,4,5));
+        System.out.println(sub(5,3));
     }
 }

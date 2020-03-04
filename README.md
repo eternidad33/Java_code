@@ -313,5 +313,24 @@ USB接口设计
 
 当导入的几个包中出现重名的类时，定义类要用完整的类名称`Message msg=new util.Message();`。
 
+#### 静态导入
+`import static util.Math.*;`静态导入后可以直接使用`util.Math`中的方法
+
+```java
+import static util.Math.*;
+public class test {
+    public static void main(String[] args) {
+        System.out.println(add(1,2,3,4,5));
+        System.out.println(sub(5,3));
+    }
+}
+```
+### Jar
+
+
+
+
+
+
 ---
 ## Java高级进阶
