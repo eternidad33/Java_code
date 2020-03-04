@@ -326,8 +326,12 @@ public class test {
 }
 ```
 ### Jar
+想用`javac`编译，然后用`jar`打包
 
-
+`jar -cvf "名称.jar" 文件夹`   
+`-c`创建一个新的`jar`文件  
+`-v`得到一个详细输出  
+`-f`设置生成的`Jar`文件名称
 
 
 
