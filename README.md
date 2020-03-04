@@ -277,160 +277,28 @@ USB接口设计
 
 ### 泛型
 基本数据类型→包装类型→`Object`类
-```java
-class Point{
-    private Object x;
-    private Object y;
-    public Object getX(){
-        return this.x;
-    }
-    public Object getY(){
-        return this.y;
-    }
-    public void setX(Object x){
-        this.x=x;
-    }
-    public  void setY(Object y){
-        this.y=y;
-    }
-}
-public class JavaDemo {
-    public static void main(String[] args) {
-        Point p1=new Point();
-        p1.setX(12);//自动装箱
-        p1.setY(21.2);
-        System.out.println("P1点的坐标为（"+p1.getX()+","+p1.getY()+")");
-    }
 
-}
-```
 向上转型成`Object`类，容易出现`ClassCastException`异常
 
 > 1. 泛型之中只允许设置引用类型，如果要操作基本类型必须使用包装类
 > 2. 泛型对象实例化对象可以简化为`Point<Integer> p1=new Point<>();`
 
-```java
-class Point <T>{
-    private T x;
-    private T y;
-    public T getX(){
-        return this.x;
-    }
-    public T getY(){
-        return this.y;
-    }
-    public void setX(T x){
-        this.x=x;
-    }
-    public  void setY(T y){
-        this.y=y;
-    }
-}
-```
 通配符`<?>`可以使泛型对象在方法中不被改变
-```java
-class Message <T>{
-     private T content;
 
-    public T getContent() {
-        return content;
-    }
-
-    public void setContent(T content) {
-        this.content = content;
-    }
-}
-public class JavaDemo {
-    public static void main(String[] args) {
-        Message<String> msg=new Message<>();
-        msg.setContent("Vigilr");
-        fun(msg);
-    }
-    public static void fun(Message<?> temp){
-//        temp.setContent(123);//通配符？可以使泛型对象不能修改，但可以访问
-        System.out.println(temp.getContent());
-    }
-
-}
-```
 `<T extends 类>`:设置泛型的上限
 `<T super 类>`:设置泛型的下限
 ### 泛型接口
-```java
-interface IMessge<T> {
-    public String content(T t);
-}
-```
+
 子类实现泛型接口两种方式：
 1. 在子类之中继续设置泛型定义
-    ```java
-    class Radio<T> implements IMessge<T> {
-        @Override
-        public String content(T t) {
-            return "hello " + t;
-        }
-    }
-    public class JavaDemo {
-        public static void main(String[] args) {
-            IMessge<String> msg = new Radio<>();
-            System.out.println(msg.content("java"));
-        }
-    }
-    ```
+
 2. 子类实现父接口是直接定义泛型类型
-    ```java
-    class Radio implements IMessge<String> {
-        @Override
-        public String content(String t) {
-            return "hello " + t;
-        }
-    }
-    public class JavaDemo {
-        public static void main(String[] args) {
-            IMessge<String> msg = new Radio();
-            System.out.println(msg.content("java"));
-        }
-    }
-    ```
+
 ### 泛型方法
 泛型方法不一定出现在泛型类之中
-```java
-public static void main(String[] args) {
-    Integer nums[]=fun(1,2,3);
-    for (int num:nums){
-        System.out.println(num);
-    }
-}
-public static <T>T[] fun(T ... args){
-    return args;
-}
-```
+
 工厂模式中使用泛型方法
-```java
-interface IMessage{
-    public void send(String str);
-}
-class MessageImpl implements IMessage{
-    @Override
-    public void send(String str) {
-        System.out.println("消息发送"+str);
-    }
-}
-class Factory{
-    public static  <T>T getInstance(String className){
-        if ("messageimpl".equalsIgnoreCase(className)){
-            return (T) new MessageImpl();
-        }
-        return null;
-    }
-}
-public class JavaDemo {
-    public static void main(String[] args) {
-        IMessage msg=Factory.getInstance("messageimpl");
-        msg.send("java");
-    }
-}
-```
+
 
 ---
 ## Java高级进阶
