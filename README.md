@@ -388,17 +388,7 @@ UML是统一的建模语言，本质是利用图形化的形式来实现程序�
 枚举主要作用于定义有限个数对象的一种结构（多例设计），通过`enum`定义枚举类
 
 遍历枚举
-```java
-enum Color {RED, BLUE, GREEN}
 
-public class JavaDemo {
-    public static void main(String[] args) {
-        for (Color c : Color.values()) {
-            System.out.println(c);
-        }
-    }
-}
-```
 `c.ordinal()`:c在枚举类中的序号
 
 `c.name()`:c的值
@@ -408,48 +398,9 @@ public class JavaDemo {
 
 构造枚举类
 
-```java
-enum Color {
-    RED("红色"), BLUE("蓝色"), GREEN("绿色");
-    private String title;
-
-    private Color(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public String toString() {
-        return this.title;
-    }
-}
-```
-
 枚举类实现接口
 
-```java
-interface IInfo {
-    String getInfo();
-}
 
-enum Color implements IInfo {
-    RED("红色"), BLUE("蓝色"), GREEN("绿色");
-    private String title;
-
-    private Color(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public String toString() {
-        return this.title;
-    }
-
-    @Override
-    public String getInfo() {
-        return this.title;
-    }
-}
-```
 
 
 
