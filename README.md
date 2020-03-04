@@ -316,15 +316,6 @@ USB接口设计
 #### 静态导入
 `import static util.Math.*;`静态导入后可以直接使用`util.Math`中的方法
 
-```java
-import static util.Math.*;
-public class test {
-    public static void main(String[] args) {
-        System.out.println(add(1,2,3,4,5));
-        System.out.println(sub(5,3));
-    }
-}
-```
 ### Jar
 想用`javac`编译，然后用`jar`打包
 
@@ -341,6 +332,19 @@ public class test {
 `java.net`网络程序开发的程序包  
 `java.sql`进行数据库编程的开发包  
 `java.awt`和`java.swing`Java的图形界面开发包，awt是重量级的组件，swing是轻量级的组件
+
+### 访问控制权限
+面向对象的三个主要特点：封装，继承，多态
+
+|     访问范围     | private | default | protected | public |
+| :--------------: | :-----: | :-----: | :-------: | :----: |
+| 同一包中的同一类 |    √    |    √    |     √     |   √    |
+| 同一包中的不同类 |         |    √    |     √     |   √    |
+|   不同包的子类   |         |         |     √     |   √    |
+|  不同包的所有类  |         |         |           |   √    |
+
+
+
 
 
 
