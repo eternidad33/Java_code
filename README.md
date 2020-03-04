@@ -381,15 +381,74 @@ UML是统一的建模语言，本质是利用图形化的形式来实现程序�
 #### 多例设计
 
 单例设计是指只保留一个实例化对象，多例设计是指保留多个实例化对象
-
 单例设计和多例设计的本质是相同的，一定都会在内部提供有`static`方法以返回实例化对象。都要进行构造方法私有化
 
 #### 枚举
 
 枚举主要作用于定义有限个数对象的一种结构（多例设计），通过`enum`定义枚举类
 
+遍历枚举
 ```java
 enum Color {RED, BLUE, GREEN}
+
+public class JavaDemo {
+    public static void main(String[] args) {
+        for (Color c : Color.values()) {
+            System.out.println(c);
+        }
+    }
+}
+```
+`c.ordinal()`:c在枚举类中的序号
+
+`c.name()`:c的值
+
+- enum:是从JDK1.5之后提供的一个关键字，用来定义枚举类
+- Enum：是一个抽象类，所有使用enum关键字定义的类，默认继承此类
+
+构造枚举类
+
+```java
+enum Color {
+    RED("红色"), BLUE("蓝色"), GREEN("绿色");
+    private String title;
+
+    private Color(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
+}
+```
+
+枚举类实现接口
+
+```java
+interface IInfo {
+    String getInfo();
+}
+
+enum Color implements IInfo {
+    RED("红色"), BLUE("蓝色"), GREEN("绿色");
+    private String title;
+
+    private Color(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
+
+    @Override
+    public String getInfo() {
+        return this.title;
+    }
+}
 ```
 
 

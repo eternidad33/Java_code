@@ -7,12 +7,32 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-enum Color {RED, BLUE, GREEN}
+interface IInfo {
+    String getInfo();
+}
+
+enum Color implements IInfo {
+    RED("红色"), BLUE("蓝色"), GREEN("绿色");
+    private String title;
+
+    private Color(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
+
+    @Override
+    public String getInfo() {
+        return this.title;
+    }
+}
 
 public class JavaDemo {
     public static void main(String[] args) {
-        for (Color c : Color.values()) {
-            System.out.println(c);
-        }
+        IInfo i = Color.BLUE;
+        System.out.println(i.getInfo());
     }
 }
