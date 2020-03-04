@@ -315,6 +315,7 @@ USB接口设计
 `import static util.Math.*;`静态导入后可以直接使用`util.Math`中的方法
 
 ### Jar
+
 想用`javac`编译，然后用`jar`打包
 
 `jar -cvf "名称.jar" 文件夹`   
@@ -323,7 +324,8 @@ USB接口设计
 `-f`设置生成的`Jar`文件名称
 
 ### 系统常见包
-`java.lang`包括String，Number，Object等  
+
+### `java.lang`包括String，Number，Object等  
 `java.lang.reflect`反射机制处理包  
 `java.util`工具类的定义，包括数据结构的定义  
 `java.io`进行输入与输出流操作的包  
@@ -380,37 +382,8 @@ UML是统一的建模语言，本质是利用图形化的形式来实现程序�
 
 单例设计是指只保留一个实例化对象，多例设计是指保留多个实例化对象
 
-```java
-class Color{
-    public static final Color RED=new Color("红色");
-    public static final Color GREEN=new Color("绿色");
-    public static final Color BLUE=new Color("蓝色");
-    private String title;
-    public Color(String titile) {
-        this.title=titile;
-    }
-    public static Color getInstance(String color){
-        switch (color){
-            case "red":return RED;
-            case "green":return GREEN;
-            case "blue":return BLUE;
-            default:return null;
-        }
-    }
-    @Override
-    public String toString(){
-        return this.title;
-    }
-}
-public class JavaDemo {
-    public static void main(String[] args) {
-        Color c=Color.getInstance("green");
-        System.out.println(c);
-    }
-}
-```
 
-单例设计和多例设计的本质是相同的，一定都会在内部提供有`static`方法以返回实例化对象
+单例设计和多例设计的本质是相同的，一定都会在内部提供有`static`方法以返回实例化对象。都要进行构造方法私有化
 
 ---
 ## Java高级进阶
