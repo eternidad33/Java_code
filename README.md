@@ -333,6 +333,14 @@ public class test {
 `-v`得到一个详细输出  
 `-f`设置生成的`Jar`文件名称
 
+### 系统常见包
+`java.lang`包括String，Number，Object等  
+`java.lang.reflect`反射机制处理包  
+`java.util`工具类的定义，包括数据结构的定义  
+`java.io`进行输入与输出流操作的包  
+`java.net`网络程序开发的程序包  
+`java.sql`进行数据库编程的开发包  
+`java.awt`和`java.swing`Java的图形界面开发包，awt是重量级的组件，swing是轻量级的组件
 
 
 
