@@ -423,6 +423,31 @@ UML是统一的建模语言，本质是利用图形化的形式来实现程序�
 
 在多个异常处理的时候要将捕获范围大的异常放在捕获范围小的异常后面
 
+通过`throws`抛出异常
+
+`throw`手动抛出异常
+
+```java
+public class JavaDemo {
+    public static void main(String[] args) {
+        try {
+            throw new Exception("throw抛出的异常");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```powershell
+java.lang.Exception: throw抛出的异常
+	at object.JavaDemo.main(JavaDemo.java:14)
+```
+`throw`和`throws`的区别
+
+- `throw`是在代码块中使用的，主要是手工对异常对象的抛出
+- `throws`是在方法定义上使用的，表示将此方法中可能产生的异常明确告诉给调用处，由调用处进行处理
+
 
 
 ---
