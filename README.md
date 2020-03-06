@@ -400,6 +400,12 @@ UML是统一的建模语言，本质是利用图形化的形式来实现程序�
 
 枚举类实现接口
 
+#### 异常
+
+处理异常的三种组合：`try...catch`，`try...catch...finally`，`try...finally`
+
+通过`e.printStackTrace();`获取完整的异常信息
+
 
 
 
