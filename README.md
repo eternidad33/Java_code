@@ -2,6 +2,11 @@
 
 > 本项目主要用于记录本人从零基础开始学Java
 
+<p align="right">
+      <a href="https://docs.oracle.com/javase/8/docs/api/index.html"><img src="https://img.shields.io/badge/java-doc-yellow" alt="Java官方文档"></a> 
+      <a href="https://docs.oracle.com/javase/8/docs/api/index.html"><img src="https://img.shields.io/badge/java-doc-yellow" alt="Java学习路线"></a> 
+</p>
+
 
 ## Java基础
 
@@ -447,6 +452,12 @@ java.lang.Exception: throw抛出的异常
 
 - `throw`是在代码块中使用的，主要是手工对异常对象的抛出
 - `throws`是在方法定义上使用的，表示将此方法中可能产生的异常明确告诉给调用处，由调用处进行处理
+
+RuntimeException是Exception的子类
+
+常见的RuntimeException： `NullPointerException`，`ClassCastException`，`IndexOutOfBoundsException`
+
+
 
 
 
