@@ -466,6 +466,34 @@ class Outer{
 
 如果`Inner`类加上`private`属性，则`Inner`无法在外部进行使用
 
+在接口中定义内部抽象类
+
+```java
+interface Ichanel{
+    public void send();
+    abstract class AbstractMessage{
+        public abstract String getContent();
+    }
+}
+```
+
+灵活的内部类
+
+```java
+interface Ichanel{
+    public void send();
+    class ChanelImpl implements Ichanel{
+        @Override
+        public void send(){
+            System.out.println("hello java!");
+        }
+    }
+    public static Ichanel getInstance(){
+        return new ChanelImpl();
+    }
+}
+```
+
 
 
 ---

@@ -9,28 +9,20 @@ package object;
  */
 interface Ichanel{
     public void send();
-    abstract class AbstractMessage{
-        public abstract String getContent();
-    }
-}
-class ChanelImpl implements Ichanel{
-
-    @Override
-    public void send() {
-        AbstractMessage msg=new Message();
-        System.out.println(msg.getContent());
-    }
-    class Message extends AbstractMessage{
-
+    class ChanelImpl implements Ichanel{
         @Override
-        public String getContent() {
-            return "hellojava";
+        public void send(){
+            System.out.println("hello java!");
         }
     }
+    public static Ichanel getInstance(){
+        return new ChanelImpl();
+    }
 }
+
 public class JavaDemo {
     public static void main(String[] args) throws Exception {
-    Ichanel msg=new ChanelImpl();
+    Ichanel msg=Ichanel.getInstance();
     msg.send();
     }
 }
