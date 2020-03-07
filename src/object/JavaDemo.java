@@ -7,18 +7,21 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-interface IChanel{
-    public void send(Imessage msg);
-    interface Imessage{
-        public String getContent();
+interface Ichanel{
+    public void send();
+    abstract class AbstractMessage{
+        public abstract String getContent();
     }
 }
-class ChanelImpl implements IChanel{
+class ChanelImpl implements Ichanel{
+
     @Override
-    public void send(Imessage msg) {
-        System.out.println("发送消息"+msg.getContent());
+    public void send() {
+        AbstractMessage msg=new Message();
+        System.out.println(msg.getContent());
     }
-    class MessageImpl implements Imessage{
+    class Message extends AbstractMessage{
+
         @Override
         public String getContent() {
             return "hellojava";
@@ -27,7 +30,7 @@ class ChanelImpl implements IChanel{
 }
 public class JavaDemo {
     public static void main(String[] args) throws Exception {
-        IChanel chanel=new ChanelImpl();
-        chanel.send(((ChanelImpl)chanel).new MessageImpl());
+    Ichanel msg=new ChanelImpl();
+    msg.send();
     }
 }
