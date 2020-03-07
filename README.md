@@ -494,6 +494,50 @@ interface Ichanel{
 }
 ```
 
+##### 静态内部类
+
+`static`的类和方法只能访问外部类的`static`的属性或方法.
+
+```java
+class Outer{
+    public static final String MSG="helloJava";
+//    public String str="Java";
+    static class Inner{
+        public void print(){
+            System.out.println(Outer.MSG);
+        }
+    }
+}
+```
+
+`static`定义的内部类并不常用，`static`定义内部接口更常用
+
+```java
+interface IMessageWrap {//消息包装
+
+    interface IMessage {//消息
+
+        public String getContent();
+    }
+
+    interface IChenal {//消息通道
+
+        public boolean connect();
+    }
+
+    public static void send(IChenal chenal, IMessage msg) {
+        if (chenal.connect()) {
+            System.out.println("【消息发送】" + msg.getContent());
+            System.out.println("消息发送成功");
+        } else {
+            System.out.println("消息发送失败");
+        }
+    }
+}
+```
+
+
+
 
 
 ---
