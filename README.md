@@ -469,8 +469,53 @@ UML是统一的建模语言，本质是利用图形化的形式来实现程序�
 
 往往使用静态方法做一个内部的匿名内部类
 
-
 匿名内部类只是一个没有名字的只能够使用一次的，并且结构固定的一个子类
+
+#### 函数式编程
+
+从JDK1.8开始提供有`Lambda`表达式的支持
+
+```java
+@FunctionalInterface
+        //函数式接口
+interface IMessage {
+    public void send(String str);
+}
+
+public class JavaDemo {
+    public static void main(String[] args) throws Exception {
+        IMessage msg = (str) -> {
+            System.out.println("发送消息" + str);
+        };
+        msg.send("HelloJava");
+    }
+}
+```
+
+`Lambda`表达式使用时有一个重要的实现要求就是SAM(Single Abstract Method)只有一个抽象方法,该接口被称为函数式接口
+
+Lambda表达式的三种格式：
+
+1. 没有参数：`()->{};`
+2. 有参数：`(参数,参数)->{};`
+3. 只有一条返回语句`(参数,参数)->语句;`
+
+```java
+@FunctionalInterface
+        //函数式接口
+interface MyMath{
+    public int add(int a,int b);
+}
+
+public class JavaDemo {
+    public static void main(String[] args) throws Exception {
+        MyMath m=(a,b)->a+b;
+        System.out.println(m.add(1,1));
+    }
+}
+```
+
+
 
 ---
 ## Java高级进阶

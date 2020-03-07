@@ -6,19 +6,15 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-interface IMessage{
-    public void send();
-    public static IMessage getInstance(){
-        return new IMessage() {
-            @Override
-            public void send() {
-                System.out.println("helloJava");
-            }
-        };
-    }
+@FunctionalInterface
+        //函数式接口
+interface MyMath {
+    public int add(int a, int b);
 }
+
 public class JavaDemo {
     public static void main(String[] args) throws Exception {
-        IMessage.getInstance().send();
+        MyMath m = (a, b) -> a + b;
+        System.out.println(m.add(1, 1));
     }
 }
