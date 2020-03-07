@@ -536,7 +536,24 @@ interface IMessageWrap {//消息包装
 }
 ```
 
+在方法中定义内部类
 
+```java
+class Outer{
+    private String msg="helloJava";
+    public void fun(long temp){
+        class Inner{
+            public void print(){
+                System.out.println(Outer.this.msg);
+                System.out.println("打印"+temp);
+            }
+        }
+        new Inner().print();
+    }
+}
+```
+
+方法中的内部类既能访问方法中的参数，又能访问外部类的私有成员属性。对于方法中参数的访问是从JDK1.8开始支持的
 
 
 
