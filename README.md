@@ -515,6 +515,24 @@ public class JavaDemo {
 }
 ```
 
+对方法的引用
+
+1. 引用静态方法：`类名称::static 方法名称;`
+
+   `IFunction<String, Integer> fun = String::valueOf;`
+
+2. 引用某个实例对象的方法：`实例化对象::普通方法;`
+
+   `IFunction fun="hellojava"::toUpperCase;`
+
+3. 引用特定类型的方法：`特定类::普通方法;`
+
+   `IFunction<String> fun=String::compareTo;`
+
+4. 引用构造方法：`类名称::new`
+
+   `IFunction<Person> fun=Person::new;`
+
 
 
 ---
