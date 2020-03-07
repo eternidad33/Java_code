@@ -533,6 +533,38 @@ public class JavaDemo {
 
    `IFunction<Person> fun=Person::new;`
 
+在`java.util.funtion`包中可以直接使用函数式接口
+
+1. 功能性函数式接口
+
+   ```java
+   Function<String,Boolean> fun="hellojava"::startsWith;
+   System.out.println(fun.apply("hello"));
+   ```
+
+2. 消费型函数式接口:只能进行数据的处理，没有任何的返回
+
+   ```java
+   Consumer<String> fun=System.out::println;
+   fun.accept("HelloJava");
+   ```
+   
+3. 供给型函数式接口
+
+   ```java
+   Supplier<String> fun="hellojava"::toUpperCase;
+   System.out.println(fun.get());
+   ```
+
+4. 断言型函数式接口
+
+   ```java
+   Predicate<String> fun="hello"::equals;
+   System.out.println(fun.test("hello"));
+   ```
+
+
+
 
 
 ---
