@@ -432,34 +432,39 @@ UML是统一的建模语言，本质是利用图形化的形式来实现程序�
 
 `throw`手动抛出异常
 
-```java
-public class JavaDemo {
-    public static void main(String[] args) {
-        try {
-            throw new Exception("throw抛出的异常");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-```powershell
-java.lang.Exception: throw抛出的异常
-	at object.JavaDemo.main(JavaDemo.java:14)
-```
 `throw`和`throws`的区别
 
 - `throw`是在代码块中使用的，主要是手工对异常对象的抛出
 - `throws`是在方法定义上使用的，表示将此方法中可能产生的异常明确告诉给调用处，由调用处进行处理
 
-RuntimeException是Exception的子类
+`RuntimeException`是`Exception`的子类
 
-常见的RuntimeException： `NullPointerException`，`ClassCastException`，`IndexOutOfBoundsException`
+常见的`RuntimeException`： `NullPointerException`，`ClassCastException`，`IndexOutOfBoundsException`
 
 #### 自定义异常类
 
+#### 内部类
 
+```java
+class Outer{
+    private String msg="外部类属性";
+    public void fun(){
+        Inner in=new Inner();   //先实例化内部类对象，在调用内部类方法
+        in.print();
+    }
+    class Inner{//内部类
+        public void print(){
+            System.out.println("【内部类调用】"+Outer.this.msg); //内部类调用外部类的属性
+        }
+    }
+}
+```
+
+内部类的优点是可以轻松地访问外部类的私有属性，缺陷是破坏了类的结构
+
+内部类和外部类之间的操作不需要`setter`和`getter`，内部类实例化对象的格式`外部类.内部类 内部类对象=new 外部类().new 内部类; `
+
+如果`Inner`类加上`private`属性，则`Inner`无法在外部进行使用
 
 
 
