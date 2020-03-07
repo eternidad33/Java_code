@@ -553,9 +553,51 @@ class Outer{
 }
 ```
 
-方法中的内部类既能访问方法中的参数，又能访问外部类的私有成员属性。对于方法中参数的访问是从JDK1.8开始支持的
+方法中的内部类既能访问方法中的参数，又能访问外部类的私有成员属性。对于方法中参数的访问是从JDK1.8开始支持的。
+
+匿名内部类的使用
+
+```java
+interface IMessage{
+    public void send();
+}
+public class JavaDemo {
+    public static void main(String[] args) throws Exception {
+        IMessage msg=new IMessage() {//匿名内部类
+            @Override
+            public void send() {
+                System.out.println("helloJava！");
+            }
+        };
+        msg.send();
+    }
+}
+```
 
 
+
+往往使用静态方法做一个内部的匿名内部类
+
+```java
+interface IMessage{
+    public void send();
+    public static IMessage getInstance(){
+        return new IMessage() {
+            @Override
+            public void send() {
+                System.out.println("helloJava");
+            }
+        };
+    }
+}
+public class JavaDemo {
+    public static void main(String[] args) throws Exception {
+        IMessage.getInstance().send();
+    }
+}
+```
+
+匿名内部类只是一个没有名字的只能够使用一次的，并且结构固定的一个子类
 
 ---
 ## Java高级进阶

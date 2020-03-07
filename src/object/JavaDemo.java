@@ -6,22 +6,19 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-class Outer{
-    private  String msg="helloJava";
-    public void fun(long temp){
-        class Inner{
-            public void print(){
-                System.out.println(Outer.this.msg);
-                System.out.println("打印"+temp);
+interface IMessage{
+    public void send();
+    public static IMessage getInstance(){
+        return new IMessage() {
+            @Override
+            public void send() {
+                System.out.println("helloJava");
             }
-        }
-        new Inner().print();
+        };
     }
 }
-
-
 public class JavaDemo {
     public static void main(String[] args) throws Exception {
-        new Outer().fun(1546543546);
+        IMessage.getInstance().send();
     }
 }
