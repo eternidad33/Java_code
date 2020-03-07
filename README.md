@@ -445,21 +445,6 @@ UML是统一的建模语言，本质是利用图形化的形式来实现程序�
 
 #### 内部类
 
-```java
-class Outer{
-    private String msg="外部类属性";
-    public void fun(){
-        Inner in=new Inner();   //先实例化内部类对象，在调用内部类方法
-        in.print();
-    }
-    class Inner{//内部类
-        public void print(){
-            System.out.println("【内部类调用】"+Outer.this.msg); //内部类调用外部类的属性
-        }
-    }
-}
-```
-
 内部类的优点是可以轻松地访问外部类的私有属性，缺陷是破坏了类的结构
 
 内部类和外部类之间的操作不需要`setter`和`getter`，内部类实例化对象的格式`外部类.内部类 内部类对象=new 外部类().new 内部类; `
@@ -468,134 +453,22 @@ class Outer{
 
 在接口中定义内部抽象类
 
-```java
-interface Ichanel{
-    public void send();
-    abstract class AbstractMessage{
-        public abstract String getContent();
-    }
-}
-```
-
 灵活的内部类
-
-```java
-interface Ichanel{
-    public void send();
-    class ChanelImpl implements Ichanel{
-        @Override
-        public void send(){
-            System.out.println("hello java!");
-        }
-    }
-    public static Ichanel getInstance(){
-        return new ChanelImpl();
-    }
-}
-```
 
 ##### 静态内部类
 
 `static`的类和方法只能访问外部类的`static`的属性或方法.
 
-```java
-class Outer{
-    public static final String MSG="helloJava";
-//    public String str="Java";
-    static class Inner{
-        public void print(){
-            System.out.println(Outer.MSG);
-        }
-    }
-}
-```
-
 `static`定义的内部类并不常用，`static`定义内部接口更常用
 
-```java
-interface IMessageWrap {//消息包装
-
-    interface IMessage {//消息
-
-        public String getContent();
-    }
-
-    interface IChenal {//消息通道
-
-        public boolean connect();
-    }
-
-    public static void send(IChenal chenal, IMessage msg) {
-        if (chenal.connect()) {
-            System.out.println("【消息发送】" + msg.getContent());
-            System.out.println("消息发送成功");
-        } else {
-            System.out.println("消息发送失败");
-        }
-    }
-}
-```
-
 在方法中定义内部类
-
-```java
-class Outer{
-    private String msg="helloJava";
-    public void fun(long temp){
-        class Inner{
-            public void print(){
-                System.out.println(Outer.this.msg);
-                System.out.println("打印"+temp);
-            }
-        }
-        new Inner().print();
-    }
-}
-```
 
 方法中的内部类既能访问方法中的参数，又能访问外部类的私有成员属性。对于方法中参数的访问是从JDK1.8开始支持的。
 
 匿名内部类的使用
 
-```java
-interface IMessage{
-    public void send();
-}
-public class JavaDemo {
-    public static void main(String[] args) throws Exception {
-        IMessage msg=new IMessage() {//匿名内部类
-            @Override
-            public void send() {
-                System.out.println("helloJava！");
-            }
-        };
-        msg.send();
-    }
-}
-```
-
-
-
 往往使用静态方法做一个内部的匿名内部类
 
-```java
-interface IMessage{
-    public void send();
-    public static IMessage getInstance(){
-        return new IMessage() {
-            @Override
-            public void send() {
-                System.out.println("helloJava");
-            }
-        };
-    }
-}
-public class JavaDemo {
-    public static void main(String[] args) throws Exception {
-        IMessage.getInstance().send();
-    }
-}
-```
 
 匿名内部类只是一个没有名字的只能够使用一次的，并且结构固定的一个子类
 
