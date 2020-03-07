@@ -16,7 +16,7 @@
 
 PATH：是操作系统提供的路径配置，定义所有可执行程序的路径
 
-CLASSPATH：是由JRE提供的，用于定义Java程序解释时类加载路径“CLASSPATH=路径”的命令形式来进行定义；
+CLASSPATH：是由JRE提供的，用于定义Java程序解释时类加载路径`CLASSPATH=路径`的命令形式来进行定义；
 
 ---
 Java 1.9之后才有的`Jshell`
