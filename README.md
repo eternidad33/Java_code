@@ -475,22 +475,6 @@ UML是统一的建模语言，本质是利用图形化的形式来实现程序�
 
 从JDK1.8开始提供有`Lambda`表达式的支持
 
-```java
-@FunctionalInterface
-        //函数式接口
-interface IMessage {
-    public void send(String str);
-}
-
-public class JavaDemo {
-    public static void main(String[] args) throws Exception {
-        IMessage msg = (str) -> {
-            System.out.println("发送消息" + str);
-        };
-        msg.send("HelloJava");
-    }
-}
-```
 
 `Lambda`表达式使用时有一个重要的实现要求就是SAM(Single Abstract Method)只有一个抽象方法,该接口被称为函数式接口
 
@@ -500,20 +484,6 @@ Lambda表达式的三种格式：
 2. 有参数：`(参数,参数)->{};`
 3. 只有一条返回语句`(参数,参数)->语句;`
 
-```java
-@FunctionalInterface
-        //函数式接口
-interface MyMath{
-    public int add(int a,int b);
-}
-
-public class JavaDemo {
-    public static void main(String[] args) throws Exception {
-        MyMath m=(a,b)->a+b;
-        System.out.println(m.add(1,1));
-    }
-}
-```
 
 对方法的引用
 
@@ -563,7 +533,63 @@ public class JavaDemo {
    System.out.println(fun.test("hello"));
    ```
 
+#### 链表
 
+由于数组的长度是固定的，所以要引入链表
+
+链表节点的基本结构
+
+```java
+class Node<E> {
+    private E data;
+    private Node nextNode;
+
+    public Node(E data) {
+        this.data = data;
+    }
+
+    public E getData() {
+        return data;
+    }
+
+    public void setData(E data) {
+        this.data = data;
+    }
+
+    public Node getNextNode() {
+        return nextNode;
+    }
+
+    public void setNextNode(Node nextNode) {
+        this.nextNode = nextNode;
+    }
+}
+```
+
+直接操作节点
+
+```java
+public static void main(String[] args){
+    Node<String> n1 = new Node<>("表头");
+    Node<String> n2 = new Node<>("表1");
+    Node<String> n3 = new Node<>("表2");
+    Node<String> n4 = new Node<>("表3");
+    Node<String> n5 = new Node<>("表尾");
+    n1.setNextNode(n2);
+    n2.setNextNode(n3);
+    n3.setNextNode(n4);
+    n4.setNextNode(n5);
+    print(n1);
+}
+
+public static void print(Node<?> n) {
+    if (n != null) {
+        System.out.println(n.getData());
+        print(n.getNextNode());
+    }
+
+}
+```
 
 
 
