@@ -1,26 +1,27 @@
 [Toc]
 # java_code
 
-> 本项目主要用于记录本人从零基础开始学Java
+> 此仓库主要用于记录本人学习Java的过程，按照阿里云上的Java学习路线自学的，代码的解释可以访问我的简书个人主页，
 
 <p align="right">
       <a href="https://docs.oracle.com/javase/8/docs/api/index.html"><img src="https://img.shields.io/badge/java-doc-yellow?logo=Java" alt="Java官方文档"></a> 
       <a href="https://edu.aliyun.com/roadmap/java?spm=5176.11400045.0.0.18f33a89excX5p"><img src="https://img.shields.io/badge/Java-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF-orange" alt="Java学习路线"></a> 
+      <a href="https://www.jianshu.com/u/651a6ee53f49"><img src="https://img.shields.io/badge/blogs-%E7%AE%80%E4%B9%A6-orange" alt="简书"></a> 
 </p>
 
 
 ## Java基础
 
-从当前所在路径加载类`SET ClASSPATH=.
+从当前所在路径加载类`SET ClASSPATH=.`
 
 PATH：是操作系统提供的路径配置，定义所有可执行程序的路径
 
 CLASSPATH：是由JRE提供的，用于定义Java程序解释时类加载路径“CLASSPATH=路径”的命令形式来进行定义；
 
 ---
-Java 1.9之后才有的**Jshell**
+Java 1.9之后才有的`Jshell`
 
-**int的取值范围**为-2147483648到2147483647
+`int`的取值范围为-2147483648到2147483647
 
 大写字母范围：A(65)\~Z(90)
 
@@ -51,13 +52,13 @@ static的定义的方法或属性都不是代码编写之初所需要考虑的�
 
 ## Java进阶
 ### 数组
-int数组初始化默认为0
+`int`数组初始化默认为0
 
 必须实例化数组才能使用数组下标
 
-foreach循环可以避免使用下标，
+`foreach`循环可以避免使用下标，
 
-foreach遍历二维数组
+`foreach`遍历二维数组
 
 返回数组的方法  
 
@@ -71,7 +72,7 @@ foreach遍历二维数组
 
 数组排序可以这样写`java.util.Arrays.sort(data);`
 
-系统自带的数组拷贝`System.arraycopy(dataA,5,dataB,5,3);`是将数组dataA中从索引为5，长度为3的一段数组复制到dataB中索引位置为5的地方，并替换掉相应长度
+系统自带的数组拷贝`System.arraycopy(dataA,5,dataB,5,3);`是将数组`dataA`中从索引为5，长度为3的一段数组复制到`dataB`中索引位置为5的地方，并替换掉相应长度
 
 可变参数
 
@@ -86,7 +87,7 @@ foreach遍历二维数组
 
 ---
 ### String
-java源代码目录:C:\Program Files (x86)\Java\jdk-9\lib\src.zip
+java源代码目录:`C:\Program Files (x86)\Java\jdk-9\lib\src.zip`
 
 JDK 1.8及以前的String支持类
 
@@ -154,7 +155,7 @@ JDK 1.9及以后String类保存的是字节数组
 
 **字符串的截取**
 
-`str.substring(startIndex,endIndex)`截取str从startIndex到endIndex的字符串片段  
+`str.substring(startIndex,endIndex)`截取`str`从`startIndex`到`endIndex`的字符串片段  
 
 **字符串的格式化**
 
@@ -217,9 +218,9 @@ fanal代表不能被覆写的方法，常量
 
 向下转型`son1 s=(son)f`不安全
 
-instanceof 
+`instanceof `
 
-instanceof为了保证向下转型的正确性，用于在转型之前进行判断，判断某个实例是否是某个类的对象
+`instanceof`为了保证向下转型的正确性，用于在转型之前进行判断，判断某个实例是否是某个类的对象
 
 ---
 
@@ -350,6 +351,7 @@ USB接口设计
 2. 子类实现父接口是直接定义泛型类型
 
 **泛型方法**
+
 泛型方法不一定出现在泛型类之中
 
 工厂模式中使用泛型方法
@@ -478,8 +480,8 @@ UML是统一的建模语言，本质是利用图形化的形式来实现程序�
 
 `c.name()`:c的值
 
-- enum:是从JDK1.5之后提供的一个关键字，用来定义枚举类
-- Enum：是一个抽象类，所有使用enum关键字定义的类，默认继承此类
+- `enum`:是从JDK1.5之后提供的一个关键字，用来定义枚举类
+- `Enum`：是一个抽象类，所有使用`enum`关键字定义的类，默认继承此类
 
 构造枚举类
 
@@ -686,6 +688,9 @@ public static void print(Node<?> n) {
 3. 添加节点
 
 ```java
+interface ILink<E> {
+    public void add(E e);
+}
 class LinkImpl<E> implements ILink<E>{
     private Node root;
     @Override
@@ -717,7 +722,49 @@ class LinkImpl<E> implements ILink<E>{
 }
 ```
 
-Link类只负责数据的操作与根节点的处理而所有后续节点的处理全部都是有Node类负责
+Link类只负责数据的操作与根节点的处理而所有后续节点的处理全部都是有Node类负责。
+
+**获取链表元素的个数**
+
+1. 在`ILink`接口中增加`size()`方法
+
+2. 在`LinkImpl`中重写`size()`方法
+
+3. 在`LinkImpl`中增加私有属性`count`,然后在`add(E e)`加上`this.count++;`语句
+
+   ```java
+   interface ILink<E> {
+       public void add(E e);
+       public int size();
+   }
+   class LinkImpl<E> implements ILink<E> {
+       private Node root;
+       private int count;
+       @Override
+       public void add(E e) {
+           ...
+           this.count++;
+       }
+       @Override
+       public int size() {
+           return this.count;
+       }
+   ...
+   }
+   ```
+
+**判断链表是否为空**
+
+既可以判断根节点是否为空，也可以判断长度是否为0
+
+```java
+public boolean isEmpty() {
+    //        return this.root==null;
+    return this.count == 0;
+}
+```
+
+
 
 ---
 ## Java高级进阶
