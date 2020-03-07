@@ -7,22 +7,27 @@ package object;
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-class Outer{
-    private String msg="外部类属性";
-    public void fun(){
-        Inner in=new Inner();   //先实例化内部类对象，在调用内部类方法
-        in.print();
+interface IChanel{
+    public void send(Imessage msg);
+    interface Imessage{
+        public String getContent();
     }
-    class Inner{//内部类
-        public void print(){
-            System.out.println("【内部类调用】"+Outer.this.msg); //内部类调用外部类的属性
+}
+class ChanelImpl implements IChanel{
+    @Override
+    public void send(Imessage msg) {
+        System.out.println("发送消息"+msg.getContent());
+    }
+    class MessageImpl implements Imessage{
+        @Override
+        public String getContent() {
+            return "hellojava";
         }
     }
 }
-
 public class JavaDemo {
     public static void main(String[] args) throws Exception {
-        Outer out=new Outer();
-        out.fun();
+        IChanel chanel=new ChanelImpl();
+        chanel.send(((ChanelImpl)chanel).new MessageImpl());
     }
 }
