@@ -863,6 +863,38 @@ public boolean isEmpty() {
    }
    ```
 
+**判断指定数据是否存在**
+
+1.  在`ILink`加上`public boolean contains(E data)`
+
+2. 在`Node`中定义`public boolean containsNode(E data)`
+
+   ```java
+   public boolean containsNode(E data) {
+       if (this.data.equals(data)) {
+           return true;
+       } else {
+           if (this.nextNode == null) {
+               return false;
+           } else {
+               return this.nextNode.containsNode(data);
+           }
+       }
+   }
+   ```
+
+3. 在`LinkImpl`中重写`public boolean contains(E data)`
+
+   ```java
+   @Override
+   public boolean contains(E data) {
+       if (data == null) {
+           return false;
+       }
+       return this.root.containsNode(data);
+   }
+   ```
+
    
 
 ---

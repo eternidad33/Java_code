@@ -17,7 +17,9 @@ interface ILink<E> {
 
     public E get(int index);
 
-    public void set(int index,E value);
+    public void set(int index, E value);
+
+    public boolean contains(E data);
 }
 
 class LinkImpl<E> implements ILink<E> {
@@ -75,12 +77,19 @@ class LinkImpl<E> implements ILink<E> {
 
     @Override
     public void set(int index, E value) {
-        if(index>this.count){
+        if (index > this.count) {
             return;
         }
-        this.foot=0;
-        this.root.setNode(index,value);
+        this.foot = 0;
+        this.root.setNode(index, value);
+    }
 
+    @Override
+    public boolean contains(E data) {
+        if (data == null) {
+            return false;
+        }
+        return this.root.containsNode(data);
     }
 
     private class Node {
@@ -114,12 +123,25 @@ class LinkImpl<E> implements ILink<E> {
             }
         }
 
-        public void setNode(int index,E value){
-            if (LinkImpl.this.foot++==index){
-                this.data=value;
-            }else {
-                this.nextNode.setNode(index,value);
+        public void setNode(int index, E value) {
+            if (LinkImpl.this.foot++ == index) {
+                this.data = value;
+            } else {
+                this.nextNode.setNode(index, value);
             }
+        }
+
+        public boolean containsNode(E data) {
+            if (this.data.equals(data)) {
+                return true;
+            } else {
+                if (this.nextNode == null) {
+                    return false;
+                } else {
+                    return this.nextNode.containsNode(data);
+                }
+            }
+
         }
     }
 }
@@ -139,7 +161,9 @@ public class LinkDemo {
         System.out.println(person.get(0));
         System.out.println(person.get(1));
         System.out.println(person.get(2));
-        person.set(1,"Python");
+        person.set(1, "Python");
         System.out.println(person.get(1));
+        System.out.println(person.contains("hello"));
+        System.out.println(person.contains("java"));
     }
 }
