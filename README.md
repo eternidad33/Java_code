@@ -629,98 +629,13 @@ Lambda表达式的三种格式：
 
 **链表节点的基本结构**
 
-```java
-class Node<E> {
-    private E data;
-    private Node nextNode;
-
-    public Node(E data) {
-        this.data = data;
-    }
-
-    public E getData() {
-        return data;
-    }
-
-    public void setData(E data) {
-        this.data = data;
-    }
-
-    public Node getNextNode() {
-        return nextNode;
-    }
-
-    public void setNextNode(Node nextNode) {
-        this.nextNode = nextNode;
-    }
-}
-```
-
 **直接操作节点**
-
-```java
-public static void main(String[] args){
-    Node<String> n1 = new Node<>("表头");
-    Node<String> n2 = new Node<>("表1");
-    Node<String> n3 = new Node<>("表2");
-    Node<String> n4 = new Node<>("表3");
-    Node<String> n5 = new Node<>("表尾");
-    n1.setNextNode(n2);
-    n2.setNextNode(n3);
-    n3.setNextNode(n4);
-    n4.setNextNode(n5);
-    print(n1);
-}
-
-public static void print(Node<?> n) {
-    if (n != null) {
-        System.out.println(n.getData());
-        print(n.getNextNode());
-    }
-
-}
-```
 
 **链表节点的增加**
 
 1. 判断增加的节点是否为空
 2. 判断根节点是否为空
 3. 添加节点
-
-```java
-interface ILink<E> {
-    public void add(E e);
-}
-class LinkImpl<E> implements ILink<E>{
-    private Node root;
-    @Override
-    public void add(E e) {
-        if(e==null) {   //添加的元素为空
-            return;
-        }
-        Node newNode=new Node(e);
-        if (this.root==null){   //如果没有根节点
-            this.root=newNode;
-        }else{
-            this.root.addNode(newNode);
-        }
-    }
-    private class Node{
-        private E data;
-        private Node nextNode;
-        public Node(E data){
-            this.data=data;
-        }
-        public void addNode(Node newNode){
-            if(this.nextNode==null){
-                this.nextNode=newNode;
-            }else {
-                this.nextNode.addNode(newNode);
-            }
-        }
-    }
-}
-```
 
 Link类只负责数据的操作与根节点的处理而所有后续节点的处理全部都是有Node类负责。
 
@@ -732,37 +647,10 @@ Link类只负责数据的操作与根节点的处理而所有后续节点的处�
 
 3. 在`LinkImpl`中增加私有属性`count`,然后在`add(E e)`加上`this.count++;`语句
 
-   ```java
-   interface ILink<E> {
-       public void add(E e);
-       public int size();
-   }
-   class LinkImpl<E> implements ILink<E> {
-       private Node root;
-       private int count;
-       @Override
-       public void add(E e) {
-           ...
-           this.count++;
-       }
-       @Override
-       public int size() {
-           return this.count;
-       }
-   ...
-   }
-   ```
 
 **判断链表是否为空**
 
 既可以判断根节点是否为空，也可以判断长度是否为0
-
-```java
-public boolean isEmpty() {
-    //        return this.root==null;
-    return this.count == 0;
-}
-```
 
 **返回链表数据**
 
@@ -770,192 +658,43 @@ public boolean isEmpty() {
 
 2. 在`LinkImpl`中加上两个属性
 
-   ```java
-   private int foot;
-   private Object[] returnData;
-   ```
-   
 3. 在`Node`中递归获取数据
-
-   ```java
-   public void toArrayNode() {
-   	LinkImpl.this.returnData[LinkImpl.this.foot++] = this.data;
-       if (this.nextNode != null) {
-           this.nextNode.toArrayNode();
-       }
-   }
-   ```
-
-   
 
 4. 在`LinkImpl`中重写`public Object[] toArray();`方法
 
-   ```java
-   @Override
-   public Object[] toArray() {
-       if (this.isEmpty()) {
-           return null;
-       }
-       this.foot = 0;
-       this.returnData = new Object[this.count];
-       this.root.toArrayNode();
-       return this.returnData;
-   }
-   ```
 
 链表数据的返回是以数组的形式返回
 
 **根据索引获取数据**
 
 1. `ILink`加上`public E get(int index);`
-
 2. 在`Node`中定义`public E getNode(int index)`
 
-   ```java
-   public E getNode(int index){
-       if(LinkImpl.this.foot++==index){
-           return this.data;
-       }else {
-           return this.nextNode.getNode(index);
-       }
-   }
-   ```
-   
 3. 在`LinkImpl`中重写`public E get(int index)`
-
-   ```java
-   @Override
-   public E get(int index) {
-       if(index>this.count){
-           return null;
-       }
-       this.foot=0;
-       return this.root.getNode(index);
-   }
-   ```
 
 **修改指定索引的数据**
 
 1. 在`ILink`加上`public void set(int index,E value);`
-
 2. 在`Node`中定义`public void setNode(int index,E value)`
-
-   ```java
-   public void setNode(int index,E value){
-       if (LinkImpl.this.foot++==index){
-           this.data=value;
-       }else {
-           this.nextNode.setNode(index,value);
-       }
-   }
-   ```
-
 3. 在`LinkImpl`中重写`public void set(int index, E value)`
-
-   ```java
-   @Override
-   public void set(int index, E value) {
-       if(index>this.count){
-           return;
-       }
-       this.foot=0;
-       this.root.setNode(index,value);
-   }
-   ```
 
 **判断指定数据是否存在**
 
 1.  在`ILink`加上`public boolean contains(E data)`
-
 2. 在`Node`中定义`public boolean containsNode(E data)`
-
-   ```java
-   public boolean containsNode(E data) {
-       if (this.data.equals(data)) {
-           return true;
-       } else {
-           if (this.nextNode == null) {
-               return false;
-           } else {
-               return this.nextNode.containsNode(data);
-           }
-       }
-   }
-   ```
-
 3. 在`LinkImpl`中重写`public boolean contains(E data)`
-
-   ```java
-   @Override
-   public boolean contains(E data) {
-       if (data == null) {
-           return false;
-       }
-       return this.root.containsNode(data);
-   }
-   ```
 
 **数据删除**
 
 1. 在`ILink`中加上`public void remove(E data)`
-
 2. 在`LinkImpl`中判断要删除的元素是否为根节点
-
-   ```java
-   @Override
-   public void remove(E data) {
-       if(this.contains(data)){
-           if(this.root.data.equals(data)){
-               this.root=this.root.nextNode;
-           }
-           this.count--;
-       }
-   }
-   ```
-
 3. 如果不是根节点，在`Node`中定义删除节点
-
-   ```java
-   public void removeNode(Node previousNode,E data){
-       if(this.data.equals(data)){
-           previousNode.nextNode=this.nextNode;
-       }else {
-           if(this.nextNode!=null){
-               this.nextNode.removeNode(this,data);
-           }
-       }
-   }
-   ```
-
 4. 在`LinkImpl`中完善`public void remove(E data)`方法
-
-   ```java
-   @Override
-   public void remove(E data) {
-       if(this.contains(data)){
-           if(this.root.data.equals(data)){
-               this.root=this.root.nextNode;
-           }else {
-               this.root.nextNode.removeNode(this.root,data);
-           }
-           this.count--;
-       }
-   }
-   ```
 
 **数据清除**
 
 1. 在`ILink`中追加`public void clean();`方法
-
 2. 在`LinkImpl`中重写`public void clean()`
-
-   ```java
-   @Override
-   public void clean(){
-       this.root=null;
-       this.count=0;
-   }
-   ```
 
 ---
 ## Java高级进阶
