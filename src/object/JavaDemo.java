@@ -32,7 +32,7 @@ class Node<E> {
 }
 
 public class JavaDemo {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Node<String> n1 = new Node<>("表头");
         Node<String> n2 = new Node<>("表1");
         Node<String> n3 = new Node<>("表2");

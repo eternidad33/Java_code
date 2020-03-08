@@ -87,10 +87,11 @@ public class LinkImpl<E> implements ILink<E> {
     }
 
     @Override
-    public void clean(){
-        this.root=null;
-        this.count=0;
+    public void clean() {
+        this.root = null;
+        this.count = 0;
     }
+
     private class Node {
         private E data;
         private Node nextNode;

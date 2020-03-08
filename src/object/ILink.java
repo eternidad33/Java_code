@@ -22,5 +22,6 @@ public interface ILink<E> {
     public boolean contains(E data);
 
     public void remove(E data);
+
     public void clean();
 }
