@@ -20,12 +20,13 @@ interface ILink<E> {
     public void set(int index, E value);
 
     public boolean contains(E data);
+
+    public void remove(E data);
+    public void clean();
 }
 
 class LinkImpl<E> implements ILink<E> {
     private Node root;
-
-
     private int count;
     private int foot;
     private Object[] returnData;
@@ -92,6 +93,23 @@ class LinkImpl<E> implements ILink<E> {
         return this.root.containsNode(data);
     }
 
+    @Override
+    public void remove(E data) {
+        if (this.contains(data)) {
+            if (this.root.data.equals(data)) {
+                this.root = this.root.nextNode;
+            } else {
+                this.root.nextNode.removeNode(this.root, data);
+            }
+            this.count--;
+        }
+    }
+
+    @Override
+    public void clean(){
+        this.root=null;
+        this.count=0;
+    }
     private class Node {
         private E data;
         private Node nextNode;
@@ -143,6 +161,17 @@ class LinkImpl<E> implements ILink<E> {
             }
 
         }
+
+        public void removeNode(Node previousNode, E data) {
+            if (this.data.equals(data)) {
+                previousNode.nextNode = this.nextNode;
+            } else {
+                if (this.nextNode != null) {
+                    this.nextNode.removeNode(this, data);
+                }
+            }
+        }
+
     }
 }
 
@@ -153,17 +182,23 @@ public class LinkDemo {
         person.add("hello");
         person.add("java");
         person.add("!");
+        person.add("Hello");
+        person.add("Horld");
+        person.add("!");
         System.out.println("【增加之后】" + person.size() + ",是否为空：" + person.isEmpty());
-        for (Object obj : person.toArray()) {
-            System.out.println(obj);
-        }
-        System.out.println("--------------------------------");
-        System.out.println(person.get(0));
-        System.out.println(person.get(1));
-        System.out.println(person.get(2));
-        person.set(1, "Python");
-        System.out.println(person.get(1));
-        System.out.println(person.contains("hello"));
-        System.out.println(person.contains("java"));
+        person.remove("Hello");
+        person.clean();
+        System.out.println("【增加之后】" + person.size() + ",是否为空：" + person.isEmpty());
+//        for (Object obj : person.toArray()) {
+//            System.out.println(obj);
+//        }
+//        System.out.println("--------------------------------");
+//        System.out.println(person.get(0));
+//        System.out.println(person.get(1));
+//        System.out.println(person.get(2));
+//        person.set(1, "Python");
+//        System.out.println(person.get(1));
+//        System.out.println(person.contains("hello"));
+//        System.out.println(person.contains("java"));
     }
 }

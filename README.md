@@ -895,7 +895,67 @@ public boolean isEmpty() {
    }
    ```
 
-   
+**数据删除**
+
+1. 在`ILink`中加上`public void remove(E data)`
+
+2. 在`LinkImpl`中判断要删除的元素是否为根节点
+
+   ```java
+   @Override
+   public void remove(E data) {
+       if(this.contains(data)){
+           if(this.root.data.equals(data)){
+               this.root=this.root.nextNode;
+           }
+           this.count--;
+       }
+   }
+   ```
+
+3. 如果不是根节点，在`Node`中定义删除节点
+
+   ```java
+   public void removeNode(Node previousNode,E data){
+       if(this.data.equals(data)){
+           previousNode.nextNode=this.nextNode;
+       }else {
+           if(this.nextNode!=null){
+               this.nextNode.removeNode(this,data);
+           }
+       }
+   }
+   ```
+
+4. 在`LinkImpl`中完善`public void remove(E data)`方法
+
+   ```java
+   @Override
+   public void remove(E data) {
+       if(this.contains(data)){
+           if(this.root.data.equals(data)){
+               this.root=this.root.nextNode;
+           }else {
+               this.root.nextNode.removeNode(this.root,data);
+           }
+           this.count--;
+       }
+   }
+   ```
+
+**数据清除**
+
+1. 在`ILink`中追加`public void clean();`方法
+
+2. 在`LinkImpl`中重写`public void clean()`
+
+   ```java
+   @Override
+   public void clean(){
+       this.root=null;
+       this.count=0;
+   }
+   ```
 
 ---
 ## Java高级进阶
