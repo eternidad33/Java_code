@@ -12,11 +12,21 @@ interface ILink<E> {
     public int size();
 
     public boolean isEmpty();
+
+    public Object[] toArray();
+
+    public E get(int index);
+
+    public void set(int index,E value);
 }
 
 class LinkImpl<E> implements ILink<E> {
     private Node root;
+
+
     private int count;
+    private int foot;
+    private Object[] returnData;
 
     @Override
     public void add(E e) {
@@ -43,6 +53,36 @@ class LinkImpl<E> implements ILink<E> {
         return this.count == 0;
     }
 
+    @Override
+    public Object[] toArray() {
+        if (this.isEmpty()) {
+            return null;
+        }
+        this.foot = 0;
+        this.returnData = new Object[this.count];
+        this.root.toArrayNode();
+        return this.returnData;
+    }
+
+    @Override
+    public E get(int index) {
+        if (index > this.count) {
+            return null;
+        }
+        this.foot = 0;
+        return this.root.getNode(index);
+    }
+
+    @Override
+    public void set(int index, E value) {
+        if(index>this.count){
+            return;
+        }
+        this.foot=0;
+        this.root.setNode(index,value);
+
+    }
+
     private class Node {
         private E data;
         private Node nextNode;
@@ -58,6 +98,29 @@ class LinkImpl<E> implements ILink<E> {
                 this.nextNode.addNode(newNode);
             }
         }
+
+        public void toArrayNode() {
+            LinkImpl.this.returnData[LinkImpl.this.foot++] = this.data;
+            if (this.nextNode != null) {
+                this.nextNode.toArrayNode();
+            }
+        }
+
+        public E getNode(int index) {
+            if (LinkImpl.this.foot++ == index) {
+                return this.data;
+            } else {
+                return this.nextNode.getNode(index);
+            }
+        }
+
+        public void setNode(int index,E value){
+            if (LinkImpl.this.foot++==index){
+                this.data=value;
+            }else {
+                this.nextNode.setNode(index,value);
+            }
+        }
     }
 }
 
@@ -69,6 +132,14 @@ public class LinkDemo {
         person.add("java");
         person.add("!");
         System.out.println("【增加之后】" + person.size() + ",是否为空：" + person.isEmpty());
-
+        for (Object obj : person.toArray()) {
+            System.out.println(obj);
+        }
+        System.out.println("--------------------------------");
+        System.out.println(person.get(0));
+        System.out.println(person.get(1));
+        System.out.println(person.get(2));
+        person.set(1,"Python");
+        System.out.println(person.get(1));
     }
 }

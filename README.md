@@ -764,7 +764,106 @@ public boolean isEmpty() {
 }
 ```
 
+**返回链表数据**
 
+1. 在`ILink`接口中追加`public Object[] toArray();`方法
+
+2. 在`LinkImpl`中加上两个属性
+
+   ```java
+   private int foot;
+   private Object[] returnData;
+   ```
+   
+3. 在`Node`中递归获取数据
+
+   ```java
+   public void toArrayNode() {
+   	LinkImpl.this.returnData[LinkImpl.this.foot++] = this.data;
+       if (this.nextNode != null) {
+           this.nextNode.toArrayNode();
+       }
+   }
+   ```
+
+   
+
+4. 在`LinkImpl`中重写`public Object[] toArray();`方法
+
+   ```java
+   @Override
+   public Object[] toArray() {
+       if (this.isEmpty()) {
+           return null;
+       }
+       this.foot = 0;
+       this.returnData = new Object[this.count];
+       this.root.toArrayNode();
+       return this.returnData;
+   }
+   ```
+
+链表数据的返回是以数组的形式返回
+
+**根据索引获取数据**
+
+1. `ILink`加上`public E get(int index);`
+
+2. 在`Node`中定义`public E getNode(int index)`
+
+   ```java
+   public E getNode(int index){
+       if(LinkImpl.this.foot++==index){
+           return this.data;
+       }else {
+           return this.nextNode.getNode(index);
+       }
+   }
+   ```
+   
+3. 在`LinkImpl`中重写`public E get(int index)`
+
+   ```java
+   @Override
+   public E get(int index) {
+       if(index>this.count){
+           return null;
+       }
+       this.foot=0;
+       return this.root.getNode(index);
+   }
+   ```
+
+**修改指定索引的数据**
+
+1. 在`ILink`加上`public void set(int index,E value);`
+
+2. 在`Node`中定义`public void setNode(int index,E value)`
+
+   ```java
+   public void setNode(int index,E value){
+       if (LinkImpl.this.foot++==index){
+           this.data=value;
+       }else {
+           this.nextNode.setNode(index,value);
+       }
+   }
+   ```
+
+3. 在`LinkImpl`中重写`public void set(int index, E value)`
+
+   ```java
+   @Override
+   public void set(int index, E value) {
+       if(index>this.count){
+           return;
+       }
+       this.foot=0;
+       this.root.setNode(index,value);
+   }
+   ```
+
+   
 
 ---
 ## Java高级进阶
