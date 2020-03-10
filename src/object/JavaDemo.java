@@ -18,6 +18,13 @@ class Node<E> {
         return data;
     }
 
+    /**
+     * @Description:
+     * @Param: [data]
+     * @return: void
+     * @Author: vigilr
+     * @Date: 2020/3/10
+     */
     public void setData(E data) {
         this.data = data;
     }

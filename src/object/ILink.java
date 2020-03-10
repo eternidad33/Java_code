@@ -37,13 +37,14 @@ public interface ILink<E> {
      * @Date: 2020/3/10
      */
     public E get(int index);
-/**
-* @Description: 
-* @Param: [index, value] 
-* @return: void 
-* @Author: vigilr
-* @Date: 2020/3/10 
-*/ 
+
+    /**
+     * @Description:
+     * @Param: [index, value]
+     * @return: void
+     * @Author: vigilr
+     * @Date: 2020/3/10
+     */
     public void set(int index, E value);
 
     public boolean contains(E data);
