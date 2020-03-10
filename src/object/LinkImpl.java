@@ -12,8 +12,22 @@ public class LinkImpl<E> implements ILink<E> {
     private int foot;
     private Object[] returnData;
 
+    /*
+     * @Description:
+     * @Param:
+     * @return:
+     * @Author: vigilr
+     * @Date: 2020/3/10
+     */
     @Override
     public void add(E e) {
+        /*
+         * @Description:
+         * @Param: [e]
+         * @return: void
+         * @Author: vigilr
+         * @Date: 2020/3/10
+         */
         if (e == null) {   //添加的元素为空
             return;
         }
@@ -25,6 +39,7 @@ public class LinkImpl<E> implements ILink<E> {
         }
         this.count++;
     }
+
 
     @Override
     public int size() {
