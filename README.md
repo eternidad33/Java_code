@@ -696,5 +696,107 @@ Link类只负责数据的操作与根节点的处理而所有后续节点的处�
 1. 在`ILink`中追加`public void clean();`方法
 2. 在`LinkImpl`中重写`public void clean()`
 
+### AWT
+
+> - AWT界面组件：包括窗口、对话框、基本组件、菜单组件。
+> - AWT布局管理器：包括流式布局FlowLayout、区域布局BorderLayout、网格布局GridLayout、卡片布局CardLayout。
+> - AWT事件处理：事件授权模型、事件类型，监听器和适配器的使用。
+
+AWT的组件包括两大类：Component和MenuComponent，即组件与菜单栏
+
+类java.awt.Component是许多组件类的父类，Component类中封装了组件通用的方法和属性，如图形的组件对象、大小、显示位置、前景色和背景色、边界、可见性等。
+
+一般我们要生成一个窗口，通常是用Window的子类Frame来进行实例化，而不是直接用到Window类
+
+**`Panel`是一个容器，放在Frame组件内，可以用于包装一组组件。**
+
+> idea中中文乱码设置`VM option: -Dfile.encoding=GB18030 `
+
+**对话框`Dialog`**
+
+
+**创建文本对话框`FileDialog`**
+
+
+***基本组件***
+
+1. 文本`Label`
+2. 按钮`Button`
+3. 复选框`Checkbox`
+4. 复选框组`CheckboxGroup`
+5. 下拉列表`Choice`
+6. 文本框`TextField`
+7. 文本区域`TextArea`
+8. 列表`List`
+9. 画布`CAnvas`
+
+***菜单组件***
+
+1. 菜单栏`MenuBar`
+2. 菜单`Menu`
+3. 菜单选项`MenuItem`
+
+***AWT布局管理器***
+
+> Frame是一个顶级窗口。Frame的默认布局管理器为`BorderLayout`。
+>
+> Panel无法单独显示，必须添加到某个容器中。Panel的默认布局管理器为FlowLayout。
+>
+> 当把Panel作为一个组件添加到某个容器中后，该Panel仍然可以有自己的布局管理器。因此，可以利用Panel使得`BorderLayout`中某个区域显示多个组件，达到设计复杂用户界面的目的。
+>
+> 如果采用无布局管理器`setLayout(null)`，则必须使用`setLocation()`、`setSize()`、`setBounds()`等方法手工设置组件的大小和位置，此方法会导致平台相关，不鼓励使用。
+
+**流式布局FlowLayout**
+
+FlowLayout是Panel、Applet的默认布局管理器。其组件的放置规律是从上到下、从左到右进行放置，如果容器足够宽，第一个组件先添加到容器中第一行的最左边，后续的组件依次添加到上一个组件的右边，如果当前行已放置不下该组件，则放置到下一行的最左边。
+
+`FlowLayout(FlowLayout.RIGHT,20,40);`：第一个参数表示组件的对齐方式，指组件在这一行中的位置是居中对齐、居右对齐还是居左对齐，第二个参数是组件之间的横向间隔，第三个参数是组件之间的纵向间隔，单位是像素。
+
+**区域布局BorderLayout**
+
+BorderLayout是Window、Frame和Dialog的默认布局管理器。BorderLayout布局管理器把容器分成5个区域：North、South、East、West和Center，每个区域只能放置一个组件。
+
+> 不一定所有的区域都有组件，如果四周的区域（West、East、North、South区域）没有组件，则由Center区域去补充，但是如果Center区域没有组件，则保持空白
+
+**网格布局GridLayout**
+
+GridLayout使容器中各个组件呈网格状布局，平均占据容器的空间，创建该布局时需要指定网格的行数和列数，然后依次添加各个组件时，会按照先行后列的顺序依次添加。
+
+**卡片布局CardLayout**
+
+CardLayout卡片布局管理器能够帮助用户处理两个以至更多的成员共享同一显示空间，它把容器分成许多层，每层的显示空间占据整个容器的大小，但是每层只允许放置一个组件，当然每层都可以利用Panel来实现复杂的用户界面。
+
+***AWT事件处理***
+
+使用授权处理模型进行事件处理的一般方法归纳如下。
+
+- 对于某种类型的事件XXXEvent，要想接收并处理这类事件，必须定义相应的事件监听器类，该类需要实现与该事件相对应的接口XXXListener。
+
+- 事件源实例化以后，必须进行授权，注册该类事件的监听器，使用addXXXListener(XXXListener )方法来注册监听器。
+
+AWT事件共有10类，可以归为两大类：低级事件和高级事件。
+
+低级事件是指基于组件和容器的事件，当一个组件上发生事件，如：鼠标的进入、单击、拖放等，或组件的窗口开关等，触发了组件事件。
+
+高级事件是基于语义的事件，它可以不和特定的动作相关联，而依赖于触发此事件的类，如在TextField中按Enter键会触发ActionEvent事件，滑动滚动条会触发AdjustmentEvent事件，或是选中项目列表的某一条就会触发ItemEvent事件。
+
+**事件监听器**
+
+每类事件都有对应的事件监听器，监听器是接口，根据动作来定义方法
+
+ 使用事件监听器：实现监听器接口、使用内部类和匿名类。
+
+使用事件适配器。
+
+***AWT多媒体编程***
+
+**多媒体处理**
+
+- 图像处理——java.awt.image
+- 二维图像绘制——Java2D。
+- 音频录制与播放——JavaSound。
+- 视频拍照与播放——JMF。
+
+
 ---
 ## Java高级进阶
