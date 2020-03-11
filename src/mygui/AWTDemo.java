@@ -28,6 +28,7 @@ public class AWTDemo extends Frame {
 //        createTextField();
 //        createTextArea();
 //        createList();
+        createMenu();
         setVisible(true);
     }
 
@@ -234,5 +235,36 @@ public class AWTDemo extends Frame {
         list.add("blue");
         list.add("green");
         add(list);
+    }
+
+    /**
+     * @Description:创建菜单
+     * @Param: []
+     * @return: void
+     * @Author: vigilr
+     * @Date: 2020/3/11
+     */
+    public void createMenu() {
+        MenuBar mb = new MenuBar();
+        setMenuBar(mb);
+        Menu m1 = new Menu("文件");
+        Menu m2 = new Menu("编辑");
+        Menu m3 = new Menu("帮助");
+        mb.add(m1);
+        mb.add(m2);
+        mb.setHelpMenu(m3);
+        MenuItem mi1 = new MenuItem("打开");
+        MenuItem mi2 = new MenuItem("保存");
+        MenuItem mi3 = new MenuItem("退出");
+        m1.add(mi1);
+        m1.add(mi2);
+        m1.addSeparator();//添加分割线
+        m1.add(mi3);
+        mi1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("打开事件");
+            }
+        });
     }
 }
