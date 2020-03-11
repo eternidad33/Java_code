@@ -1,62 +1,48 @@
 package object;
 
+import javafx.scene.input.DataFormat;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 /**
  * @author Vigilr
  * @project Java_code
  * @package object
  * @time 2020-03-01 12:35 pm
  */
-class Node<E> {
-    private E data;
-    private Node nextNode;
-
-    public Node(E data) {
-        this.data = data;
-    }
-
-    public E getData() {
-        return data;
-    }
-
-    /**
-     * @Description:
-     * @Param: [data]
-     * @return: void
-     * @Author: vigilr
-     * @Date: 2020/3/10
-     */
-    public void setData(E data) {
-        this.data = data;
-    }
-
-    public Node getNextNode() {
-        return nextNode;
-    }
-
-    public void setNextNode(Node nextNode) {
-        this.nextNode = nextNode;
-    }
-}
-
 public class JavaDemo {
     public static void main(String[] args) {
-        Node<String> n1 = new Node<>("表头");
-        Node<String> n2 = new Node<>("表1");
-        Node<String> n3 = new Node<>("表2");
-        Node<String> n4 = new Node<>("表3");
-        Node<String> n5 = new Node<>("表尾");
-        n1.setNextNode(n2);
-        n2.setNextNode(n3);
-        n3.setNextNode(n4);
-        n4.setNextNode(n5);
-        print(n1);
-    }
-
-    public static void print(Node<?> n) {
-        if (n != null) {
-            System.out.println(n.getData());
-            print(n.getNextNode());
+        TimeZone tz=TimeZone.getDefault();  //设置时区
+        tz=TimeZone.getTimeZone("US/Eastern");
+//        tz=TimeZone.getTimeZone("GMT+08:00");
+//        System.out.println(tz.getID());
+        Locale lc=Locale.JAPAN;
+//        System.out.println(lc.toString());
+        Calendar calender=Calendar.getInstance();
+//        Date date=calender.getTime();
+        System.out.println(calender.getTime());
+//        System.out.println("year:"+calender.get(Calendar.YEAR));
+//        System.out.println("month:"+(calender.get(Calendar.MONTH)+1));
+//        System.out.println("day:"+calender.get(Calendar.DAY_OF_MONTH));
+//        System.out.println("hour:"+calender.get(Calendar.HOUR));
+//        System.out.println("minute:"+calender.get(Calendar.MINUTE));
+        calender.set(2020,3,10,15,10,30);
+        System.out.println(calender.getTime());
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日 E HH时mm分ss秒");
+        String str=sdf.format(calender.getTime());
+        System.out.println(str);
+        SimpleDateFormat sdf2=new SimpleDateFormat("a hh:mm:ss ");
+//        System.out.println(sdf2.format(calender.getTime()));
+        try {
+            Date date=sdf.parse(str);
+            System.out.println(sdf2.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-
     }
 }
