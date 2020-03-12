@@ -1,6 +1,8 @@
 package mygui;
 
 import java.awt.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * @author Vigilr
@@ -9,10 +11,10 @@ import java.awt.*;
  * @time 2020/3/12 11:43
  */
 public class ShowImage extends Frame {
-    String filename;
+    URL filename;
 
-    public ShowImage(String filename) {
-        setSize(500, 500);
+    public ShowImage(URL filename) {
+        setSize(1000, 1000);
         setVisible(true);
         this.filename = filename;
     }
@@ -26,7 +28,8 @@ public class ShowImage extends Frame {
 
     }
 
-    public static void main(String[] args) {
-        new ShowImage("F:\\WASD.jpg");
+    public static void main(String[] args) throws MalformedURLException {
+//        new ShowImage("F:\\WASD.jpg");
+        new ShowImage(new URL("https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/weizhuang.jpg\n"));
     }
 }
