@@ -74,51 +74,51 @@ public class FileEditor extends WindowAdapter implements ActionListener {
                 fileName = fileDialog.getDirectory() + fileDialog.getFile();
                 //然后读取文件
                 FileReader fr = new FileReader(fileName);
-                BufferedReader br=new BufferedReader(fr);
-                String str="";
-                while (br.ready()){
-                    int c=br.read();
-                    str+=(char)c;
+                BufferedReader br = new BufferedReader(fr);
+                String str = "";
+                while (br.ready()) {
+                    int c = br.read();
+                    str += (char) c;
                 }
                 textArea.setText(str);
                 br.close();
                 fr.close();
-                frame.setTitle("Java文本编辑器-"+fileName);
-            }else if(e.getActionCommand()=="保存"){
+                frame.setTitle("Java文本编辑器-" + fileName);
+            } else if (e.getActionCommand() == "保存") {
                 //写入文件
-                File file=new File(fileName);
-                FileWriter fos=new FileWriter(file,true);
-                BufferedWriter bos=new BufferedWriter(fos);
-                PrintWriter pos=new PrintWriter(bos);
+                File file = new File(fileName);
+                FileWriter fos = new FileWriter(file, true);
+                BufferedWriter bos = new BufferedWriter(fos);
+                PrintWriter pos = new PrintWriter(bos);
                 //写入数据
                 pos.print(textArea.getText());
                 //关闭输出流
                 bos.close();
                 pos.close();
                 fos.close();
-            }else if(e.getActionCommand()=="另存为"){
+            } else if (e.getActionCommand() == "另存为") {
                 //选择文件
                 FileDialog fileDialog = new FileDialog(frame, "open", 0);
                 fileDialog.setVisible(true);
                 fileName = fileDialog.getDirectory() + fileDialog.getFile();
                 //写入文件
-                File file=new File(fileName);
-                FileWriter fos=new FileWriter(file,true);
-                BufferedWriter bos=new BufferedWriter(fos);
-                PrintWriter pos=new PrintWriter(bos);
+                File file = new File(fileName);
+                FileWriter fos = new FileWriter(file, true);
+                BufferedWriter bos = new BufferedWriter(fos);
+                PrintWriter pos = new PrintWriter(bos);
                 //写入数据
                 pos.print(textArea.getText());
                 //关闭输出流
                 bos.close();
                 pos.close();
                 fos.close();
-            }else if(e.getActionCommand()=="退出"){
+            } else if (e.getActionCommand() == "退出") {
                 System.exit(0);
-            }else if(e.getActionCommand()=="关于"){
+            } else if (e.getActionCommand() == "关于") {
                 //显示关于对话框
-                final Dialog dialog=new Dialog(frame,"关于",true);
-                dialog.setSize(200,200);
-                dialog.setLayout(new GridLayout(2,1));
+                final Dialog dialog = new Dialog(frame, "关于", true);
+                dialog.setSize(200, 200);
+                dialog.setLayout(new GridLayout(2, 1));
                 //设置关闭事件
                 dialog.addWindowListener(new WindowAdapter() {
                     /**
@@ -133,18 +133,18 @@ public class FileEditor extends WindowAdapter implements ActionListener {
                     }
                 });
                 //显示消息
-                Panel panel=new Panel();
-                Label label=new Label("Java文本编辑器");
+                Panel panel = new Panel();
+                Label label = new Label("Java文本编辑器");
                 label.setForeground(Color.RED);
-                Label l=new Label("作者：Vigilr");
+                Label l = new Label("作者：Vigilr");
                 l.setForeground(Color.cyan);
-                panel.add(label,BorderLayout.NORTH);
-                panel.add(l,BorderLayout.CENTER);
-                dialog.setLocation(500,200);
+                panel.add(label, BorderLayout.NORTH);
+                panel.add(l, BorderLayout.CENTER);
+                dialog.setLocation(500, 200);
                 dialog.add(panel);
                 dialog.setVisible(true);
             }
-        }catch (FileNotFoundException e1){
+        } catch (FileNotFoundException e1) {
 //            e1.printStackTrace();
         } catch (IOException ex) {
 //            ex.printStackTrace();
