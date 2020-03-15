@@ -808,19 +808,19 @@ AWT事件共有10类，可以归为两大类：低级事件和高级事件。
 
 **基本语法**
 
-1. 八进制表示的字符，以\0开头，后跟1～3位数字
-2. 十六进制表示的字符，以\x开头，后跟两位字符
-3. Unicode编号表示的字符，以\u开头，后跟4位字符
-4. 点号字符'.'是一个元字符，默认模式下，它匹配除了换行符以外的任意字符
-5. 以(? s)开头，s表示single line，即单行匹配模式
+1. 八进制表示的字符，以`\0`开头，后跟1～3位数字
+2. 十六进制表示的字符，以`\x`开头，后跟两位字符
+3. Unicode编号表示的字符，以`\u`开头，后跟4位字符
+4. 点号字符`.`是一个元字符，默认模式下，它匹配除了换行符以外的任意字符
+5. 以`(? s)`开头，s表示single line，即单行匹配模式
 6. 为方便表示连续的多个字符，字符组中可以使用连字符'-'
 7. 字符组支持排除的概念，在`[`后紧跟一个字符`^`,只有在字符组的开头才是元字符，如果不在开头，就是普通字符，匹配它自身
-8. \d:d表示digit，匹配一个数字字符
-9. \w:w表示word，匹配一个单词字符
-10. \s:s表示space，匹配一个空白字符
-11. \D：匹配一个非数字字符
-12. \W：匹配一个非单词字符
-13.  \S：匹配一个非空白字符
+8. `\d`:d表示digit，匹配一个数字字符
+9. `\w`:w表示word，匹配一个单词字符
+10. `\s`:s表示space，匹配一个空白字符
+11. `\D`：匹配一个非数字字符
+12. `\W`：匹配一个非单词字符
+13.  `\S`：匹配一个非空白字符
 
 **量词**指的是指定出现次数的元字符：
 
@@ -850,7 +850,65 @@ AWT事件共有10类，可以归为两大类：低级事件和高级事件。
 
 这些环视结构也被称为断言，断言的对象是边界，边界不占用字符，没有宽度，所以也被称为零宽度断言。
 
+**Java API**
 
+正则表达式相关的类位于包java.util.regex下，有两个主要的类，一个是Pattern，另一个是Matcher
+
+1. 表示正则表达式
+
+   在Java中，没有什么特殊的语法能直接表示正则表达式，需要用字符串表示，而在字符串中，'\'也是一个元字符，为了在字符串中表示正则表达式的'\'，就需要使用两个'\'，即'\\'，而要匹配'\'本身，就需要4个'\'，即'\\\\'
+
+   三种匹配模式：单行模式（点号模式）、多行模式和大小写无关模式，它们对应的常量分别为：Pattern.DOTALL、Pattern.MULTILINE和Pattern.CASE_INSENSI-TIVE，多个模式可以一起使用，通过'|'连起来即可
+
+2. 切分
+
+   ```java
+   String str="abc    def   ghi   jkl";
+   String[] result=str.split("[\\s.]+");
+   ```
+
+   ```java
+   String str = ", abc, , def, , ";
+   String[] result = str.split(", ");
+   System.out.println(result.length);
+   System.out.println(Arrays.toString(result));
+   ```
+
+3. 验证
+
+   ```java
+   String regex="\\d{8}";
+   String str="123456789";
+   System.out.println(str.matches(regex));
+   ```
+
+4. 查找
+
+   ```java
+   //分组正则
+   String regex = "(\\d{4})-(\\d{2})-(\\d{2})";
+   Pattern pattern = Pattern.compile(regex);
+   String str = "今天：2020-03-15 昨天：2020-03-14";
+   Matcher matcher = pattern.matcher(str);
+   while (matcher.find()) {
+       System.out.println(matcher.group(1) + "年" + matcher.group(2) + "月" + matcher.group(3) + "日");
+   }
+   ```
+
+5. 替换
+
+   ```java
+   String regex="\\s+";
+   String str="hello      world          !";
+   System.out.println(str);
+   System.out.println(str.replaceAll(regex," "));
+   String regex = "(\\d{4})-(\\d{2})-(\\d{2})";
+   Pattern pattern = Pattern.compile(regex);
+   String str = "今天：2020-03-15 昨天：2020-03-14";
+   System.out.println(str.replaceAll(regex,"$1/$2/$3"));
+   ```
+
+   
 
 ---
 ## Java高级进阶
