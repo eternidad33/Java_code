@@ -9,6 +9,9 @@
       <a href="https://www.jianshu.com/u/651a6ee53f49"><img src="https://img.shields.io/badge/blogs-%E7%AE%80%E4%B9%A6-orange" alt="简书"></a> 
 </p>
 
+推荐书籍：
+- [《Java编程的逻辑》](https://weread.qq.com/web/reader/b51320f05e159eb51b29226kc81322c012c81e728d9d180)
+- [《疯狂Java讲义精粹》](https://weread.qq.com/web/reader/b9f325405a64efb9fa69ebfkc81322c012c81e728d9d180)
 
 ## Java基础
 
@@ -696,6 +699,8 @@ Link类只负责数据的操作与根节点的处理而所有后续节点的处�
 1. 在`ILink`中追加`public void clean();`方法
 2. 在`LinkImpl`中重写`public void clean()`
 
+---
+
 ### AWT
 
 > - AWT界面组件：包括窗口、对话框、基本组件、菜单组件。
@@ -796,7 +801,6 @@ AWT事件共有10类，可以归为两大类：低级事件和高级事件。
 - 二维图像绘制——Java2D。
 - 音频录制与播放——JavaSound。
 - 视频拍照与播放——JMF。
-
 
 ---
 ## Java高级进阶
