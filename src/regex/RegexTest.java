@@ -15,32 +15,32 @@ import java.util.regex.Pattern;
  * @time 2020/3/15 20:28
  */
 public class RegexTest {
-    private static Pattern templatePattern=Pattern.compile("\\{(\\w+)\\}");
+    private static Pattern templatePattern = Pattern.compile("\\{(\\w+)\\}");
 
     /**
-    * @Description: 模板引擎 
-    * @Param: [template, params] 
-    * @return: java.lang.String
-    */ 
+     * @Description: 模板引擎
+     * @Param: [template, params]
+     * @return: java.lang.String
+     */
     @NotNull
-    public static String templateEngine(String template, Map<String,Object> params){
-        StringBuffer stringBuffer=new StringBuffer();
-        Matcher matcher=templatePattern.matcher(template);
-        while(matcher.find()){
-            String key=matcher.group(1);
-            Object value=params.get(key);
-            matcher.appendReplacement(stringBuffer,value!=null?Matcher.quoteReplacement(value.toString()):"" );
+    public static String templateEngine(String template, Map<String, Object> params) {
+        StringBuffer stringBuffer = new StringBuffer();
+        Matcher matcher = templatePattern.matcher(template);
+        while (matcher.find()) {
+            String key = matcher.group(1);
+            Object value = params.get(key);
+            matcher.appendReplacement(stringBuffer, value != null ? Matcher.quoteReplacement(value.toString()) : "");
         }
         matcher.appendTail(stringBuffer);
         return stringBuffer.toString();
     }
 
-    public static void templateDemo(){
-        String template="我是{name},我的年龄{age}。";
-        Map<String,Object> params=new HashMap<>();
-        params.put("name","vigilr");
-        params.put("age","23");
-        System.out.println(templateEngine(template,params));
+    public static void templateDemo() {
+        String template = "我是{name},我的年龄{age}。";
+        Map<String, Object> params = new HashMap<>();
+        params.put("name", "vigilr");
+        params.put("age", "23");
+        System.out.println(templateEngine(template, params));
     }
 
     public static void main(String[] args) {
