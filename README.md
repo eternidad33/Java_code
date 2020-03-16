@@ -862,51 +862,11 @@ AWT事件共有10类，可以归为两大类：低级事件和高级事件。
 
 2. 切分
 
-   ```java
-   String str="abc    def   ghi   jkl";
-   String[] result=str.split("[\\s.]+");
-   ```
-
-   ```java
-   String str = ", abc, , def, , ";
-   String[] result = str.split(", ");
-   System.out.println(result.length);
-   System.out.println(Arrays.toString(result));
-   ```
-
 3. 验证
-
-   ```java
-   String regex="\\d{8}";
-   String str="123456789";
-   System.out.println(str.matches(regex));
-   ```
 
 4. 查找
 
-   ```java
-   //分组正则
-   String regex = "(\\d{4})-(\\d{2})-(\\d{2})";
-   Pattern pattern = Pattern.compile(regex);
-   String str = "今天：2020-03-15 昨天：2020-03-14";
-   Matcher matcher = pattern.matcher(str);
-   while (matcher.find()) {
-       System.out.println(matcher.group(1) + "年" + matcher.group(2) + "月" + matcher.group(3) + "日");
-   }
-   ```
-
 5. 替换
-
-   ```java
-   String regex="\\s+";
-   String str="hello      world          !";
-   System.out.println(str);
-   System.out.println(str.replaceAll(regex," "));
-   String regex = "(\\d{4})-(\\d{2})-(\\d{2})";
-   Pattern pattern = Pattern.compile(regex);
-   String str = "今天：2020-03-15 昨天：2020-03-14";
-   System.out.println(str.replaceAll(regex,"$1/$2/$3"));
-   ```
 
    
 
