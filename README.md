@@ -920,6 +920,35 @@ public class Vector<E>
 extends AbstractList<E>
 implements List<E>, RandomAccess, Cloneable, Serializable
 ```
+---
+### Set集合
+
+参考书籍[《疯狂Java讲义精粹》](https://weread.qq.com/web/reader/b9f325405a64efb9fa69ebfkc81322c012c81e728d9d180)
+
+Set集合不允许包含相同的元素，如果试图把两个相同的元素加入同一个Set集合中，则添加操作失败，add方法返回false，且新元素不会被加入。
+
+Set判断两个对象相同不是使用==运算符，而是根据equals方法
+
+**HashSet**
+
+
+HashSet按Hash算法来存储集合中的元素，因此具有很好的存取和查找性能。
+
+HashSet不是同步的，如果多个线程同时访问一个HashSet，假设有两个或者两个以上线程同时修改了HashSet集合时，则必须通过代码来保证其同步。
+
+**LinkedHashSet**
+
+HashSet还有一个子类LinkedHashSet，LinkedHashSet集合也是根据元素的hashCode值来决定元素的存储位置，但它同时使用链表维护元素的次序，这样使得元素看起来是以插入的顺序保存的。
+
+**TreeSet**
+
+TreeSet是SortedSet接口的实现类，正如SortedSet名字所暗示的，TreeSet可以确保集合元素处于排序状态。
+
+TreeSet并不是根据元素的插入顺序进行排序的，而是根据元素实际值的大小来进行排序的。
+
+**EnumSet**
+
+EnumSet是一个专为枚举类设计的集合类，EnumSet中的所有元素都必须是指定枚举类型的枚举值，该枚举类型在创建EnumSet时显式或隐式地指定。EnumSet的集合元素也是有序的，EnumSet以枚举值在Enum类内的定义顺序来决定集合元素的顺序。
 
 
 
