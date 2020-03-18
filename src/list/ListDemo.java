@@ -27,6 +27,5 @@ public class ListDemo {
 //        });
         List<Person> all = new ArrayList<>();
         ListTest.lightest(all);
-        PriorityQueue
     }
 }
