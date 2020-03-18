@@ -868,7 +868,60 @@ AWT事件共有10类，可以归为两大类：低级事件和高级事件。
 
 5. 替换
 
-   
-
 ---
 ## Java高级进阶
+
+### List集合
+
+集合操作最常用的两种方法：`add()`，`iterator()`
+
+`public interface List<E> extends Collection<E>`
+
+Collection的继承关系，如图：
+
+![Collection继承关系](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Collection.png)
+
+List的三个常用子类：
+
+1. `ArrayList`
+2. `LinkedList `
+3. `Vector`
+
+**ArrayList**
+
+继承关系
+
+```java
+public class ArrayList<E>
+extends AbstractList<E>
+implements List<E>, RandomAccess, Cloneable, Serializable
+```
+
+**LinkedList**
+
+继承关系
+
+```java
+public class LinkedList<E>
+extends AbstractSequentialList<E>
+implements List<E>, Deque<E>, Cloneable, Serializable
+```
+
+
+
+**Vector**
+
+Vector是一个古老的集合（从JDK 1.0就有了）
+
+继承关系
+
+```java
+public class Vector<E>
+extends AbstractList<E>
+implements List<E>, RandomAccess, Cloneable, Serializable
+```
+
+
+
+> **ArrayList和Vector的显著区别**：ArrayList是线程不安全的，当多个线程访问同一个ArrayList集合时，如果有超过一个线程修改了ArrayList集合，则程序必须手动保证该集合的同步性；但Vector集合则是线程安全的，无须程序保证该集合的同步性。
+
