@@ -11,10 +11,10 @@ import java.util.*;
 public class ListDemo {
 
     /**
-    * @Description: adk  d sad  sdad
-    * @Param: [args]
-    * @return: void
-    */
+     * @Description: adk  d sad  sdad
+     * @Param: [args]
+     * @return: void
+     */
     public static void main(String[] args) {
 //        List<String> all=new ArrayList<>();
 //        System.out.println("all是否为空"+all.isEmpty());
