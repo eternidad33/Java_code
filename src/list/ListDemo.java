@@ -1,7 +1,6 @@
 package list;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Vigilr
@@ -28,6 +27,6 @@ public class ListDemo {
 //        });
         List<Person> all = new ArrayList<>();
         ListTest.lightest(all);
-
+        PriorityQueue
     }
 }
