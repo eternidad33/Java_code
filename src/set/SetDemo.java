@@ -1,7 +1,9 @@
 package set;
 
 import java.util.HashSet;
+import java.util.Queue;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * 项目名 Java_code
@@ -12,10 +14,12 @@ import java.util.Set;
  */
 public class SetDemo {
     public static void main(String[] args) {
-        Set all= new HashSet();
-        all.add(new String("hello"));
-        all.add(new String("hello"));
-        all.add("Java");
-        System.out.println(all);
+//        Set<String> all=new HashSet<>();
+        Set<String> all=new TreeSet<>();
+        all.add("hello");
+        all.add("hello");
+        all.add("java");
+        all.add("!");
+        all.forEach(System.out::print);
     }
 }
