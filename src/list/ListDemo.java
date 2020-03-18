@@ -10,6 +10,12 @@ import java.util.List;
  * @time 2020/3/17 17:05
  */
 public class ListDemo {
+
+    /**
+    * @Description: adk  d sad  sdad
+    * @Param: [args]
+    * @return: void
+    */
     public static void main(String[] args) {
 //        List<String> all=new ArrayList<>();
 //        System.out.println("all是否为空"+all.isEmpty());

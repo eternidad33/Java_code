@@ -68,6 +68,11 @@ public class RegexDemo {
         }
     }
 
+    /**
+    * 查找 
+    * @param: [str]
+    * @return: void
+    */ 
     public static void findPhoneCode(String str) {
         Matcher matcher = PHONE_PATTERN.matcher(str);
         while (matcher.find()) {

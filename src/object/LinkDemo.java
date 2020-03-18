@@ -6,7 +6,6 @@ package object;
  * @package object
  * @time 2020/3/7 20:56
  */
-
 public class LinkDemo {
     public static void main(String[] args) {
         ILink<String> person = new LinkImpl<>();
