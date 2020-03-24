@@ -972,3 +972,57 @@ Map的继承关系，如图：
 
 > **ArrayList和Vector的显著区别**：ArrayList是线程不安全的，当多个线程访问同一个ArrayList集合时，如果有超过一个线程修改了ArrayList集合，则程序必须手动保证该集合的同步性；但Vector集合则是线程安全的，无须程序保证该集合的同步性。
 
+---
+### Java多线程编程
+
+Java是多线程的编程语言，有利于并发访问处理。
+
+继承**Thread类**实现多线程
+
+多线程的执行的方法在`run()`中定义，
+
+start()方法是并发执行
+
+每一个线程类对象只允许启动一次，如果重复启动，就会抛出异常
+
+![JVM线程](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/JVM线程.png)
+
+
+`Runnable`接口的使用
+
+```java
+Thread th=new Thread(new MyThread("线程1启动"));
+th.start();
+```
+
+**Thread与Runnable关系**
+
+Thread用于实现Runnable，如图所示：
+
+![Thread与Runnable](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Thread.png)
+
+多线程的设计之中，使用了代理设计模式的结构，用户设计的线程主体负责项目核心功能，其他辅助功能由Thread类实现
+
+多线程开发的本质实质上是在于多个线程可以进行统一资源的抢占
+
+**Callable实现多线程**
+
+`Callable`的定义
+
+```java
+@FunctionalInterface
+public interface Callable<V> {
+    V call() throws Exception;
+}
+```
+
+如图Callable的继承关系：
+
+![Callable的继承关系](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Callable.png)
+
+
+| Runnable                 | Callable           |
+| ------------------------ | ------------------ |
+| JDK1.0                   | JDK1.5             |
+| 只有void run()，无返回值 | V call()，有返回值 |
+
