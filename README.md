@@ -923,8 +923,6 @@ implements List<E>, RandomAccess, Cloneable, Serializable
 ---
 ### Set集合
 
-参考书籍[《疯狂Java讲义精粹》](https://weread.qq.com/web/reader/b9f325405a64efb9fa69ebfkc81322c012c81e728d9d180)
-
 Set集合不允许包含相同的元素，如果试图把两个相同的元素加入同一个Set集合中，则添加操作失败，add方法返回false，且新元素不会被加入。
 
 Set判断两个对象相同不是使用==运算符，而是根据equals方法
@@ -950,7 +948,27 @@ TreeSet并不是根据元素的插入顺序进行排序的，而是根据元素�
 
 EnumSet是一个专为枚举类设计的集合类，EnumSet中的所有元素都必须是指定枚举类型的枚举值，该枚举类型在创建EnumSet时显式或隐式地指定。EnumSet的集合元素也是有序的，EnumSet以枚举值在Enum类内的定义顺序来决定集合元素的顺序。
 
+---
 
+### Map集合
+
+Map用于保存具有映射关系的数据，因此Map集合里保存着两组值，一组值用于保存Map里的key，另外一组值用于保存Map里的value，key和value都可以是任何引用类型的数据。
+
+Map的继承关系，如图：
+
+![Map](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Map.png)
+
+`HashMap`和`Hashtable`都是Map接口的典型实现类，它们之间的关系完全类似于`ArrayList`和`Vector`的关系
+
+> Hashtable是一个线程安全的Map实现，但HashMap是线程不安全的实现
+>
+> Hashtable不允许使用null作为key和value
+
+`HashMap`、`Hashtable`也不能保证其中key-value对的顺序。
+
+`Properties`类是`Hashtable`类的子类，正如它的名字所暗示的，该对象在处理属性文件时特别方便（Windows操作平台上的ini文件就是一种属性文件）。
+
+`TreeMap`就是一个红黑树数据结构，每个key-value对即作为红黑树的一个节点。`TreeMap`存储key-value对（节点）时，需要根据key对节点进行排序。
 
 > **ArrayList和Vector的显著区别**：ArrayList是线程不安全的，当多个线程访问同一个ArrayList集合时，如果有超过一个线程修改了ArrayList集合，则程序必须手动保证该集合的同步性；但Vector集合则是线程安全的，无须程序保证该集合的同步性。
 
