@@ -1026,3 +1026,59 @@ public interface Callable<V> {
 | JDK1.0                   | JDK1.5             |
 | 只有void run()，无返回值 | V call()，有返回值 |
 
+### 线程常用操作方法
+
+构造方法`public Thread(Runnable target, String name)`
+
+设置名字`public final synchronized void setName(String name)`
+
+取得名字`public final String getName()`
+
+使用Java命令就会启动一个JVM的进程，一台电脑可以同时启动若干个JVM进程
+
+主线程可以创建若干个子线程，主线程负责处理整体流程，而子线程负责处理耗时操作
+
+
+**线程休眠**
+
+两种休眠处理方式
+
+一个参数，毫秒：`public static native void sleep(long millis) throws InterruptedException;`
+
+两个参数，毫秒纳秒`public static void sleep(long millis, int nanos)throws InterruptedException`
+
+
+休眠的主要特点是自动实现线程的唤醒，以继续进行后续的处理，多个线程休眠是有顺序的
+
+**线程中断**
+
+所有的线程都能被中断，线程中断必须进行异常处理
+
+
+**线程的强制执行**
+
+正常情况下主线程和子线程交替执行
+
+强制执行`public final void join() throws InterruptedException`
+
+
+**线程礼让**
+
+礼让方法：`public static native void yield();`
+
+**线程优先级**
+
+设置优先级`public final void setPriority(int newPriority)`
+
+获取优先级`public final int getPriority()`
+
+三个优先级常量
+
+```java
+public final static int MIN_PRIORITY = 1;
+public final static int NORM_PRIORITY = 5;
+public final static int MAX_PRIORITY = 10;
+```
+
+优先级高的最有可能先执行，并不是绝对先执行
+
