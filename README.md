@@ -1105,3 +1105,66 @@ public final static int MAX_PRIORITY = 10;
 死锁是开发中不确定的状态
 
 若干个线程访问同一资源时一定要进行同步处理，而过多的同步则会造成死锁
+
+### 基础类库
+
+**StringBuffer类**
+
+构造方法：`public StringBuffer()`
+
+构造方法：`public StringBuffer(String str)`
+
+基本操作方法：
+
+```java
+public static void main(String[] args) {
+    StringBuffer sb=new StringBuffer("baidu");
+    sb.append(".com").insert(0,"www.");
+    System.out.println(sb);
+    sb.delete(0,4);
+    System.out.println(sb);
+}
+```
+
+字符串反转：`sb.reverse()`
+
+`StringBuffer`属于线程安全的全部使用`synchronized`，`StringBuilder`是非线程安全的。
+
+**CharSequence接口**
+
+CharSequence是描述字符串结构的接口
+
+| String                                                       | StringBuffer                                                 | StringBuilder                                                |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| public final class String<br/>extends Object<br/>implements Serializable, Comparable<String>, **CharSequence** | public final class StringBuffer<br/>extends Object<br/>implements Serializable, **CharSequence** | public final class StringBuilder<br/>extends Object<br/>implements Serializable, **CharSequence** |
+
+**Runtime类**
+
+在每一个JVM只允许提供有一个Runtime类的对象，所以这个类的构造方法被默认私有化了
+
+**System类**
+
+- 数组拷贝：`public static native void arraycopy(Object src,int srcPos,Object dest,int destPos,int length);`
+
+- 获取当前日期时间数值：`public static native long currentTimeMillis();`
+
+- 进行垃圾回收：`public static void gc()`
+
+**Math类**
+
+Math类的全部方法:
+
+```java
+/**
+* 指定小数位数四舍五入
+* @param: [num, scale]
+* @return: double
+*/
+public static double round(double num,int scale){
+    return Math.round(num*Math.pow(10,scale))/Math.pow(10,scale);
+}
+```
+
+**Random类**
+
+生成不包含边界的随机正整数：`public int nextInt(int bound)`
