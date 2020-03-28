@@ -1168,3 +1168,45 @@ public static double round(double num,int scale){
 **Random类**
 
 生成不包含边界的随机正整数：`public int nextInt(int bound)`
+
+### 开发支持类
+
+**UUID类**
+
+UUID是一种生成无重复字符串的一种程序类，这种程序类的主要功能是根据时间戳实现一个自动的无重复字符串定义。
+
+随机获取UUID:`public static UUID randomUUID()`
+
+根据字符串获取UUID内容:`public static UUID fromString(String name)`
+
+**Option类**
+
+Option类的主要功能是进行null的相关处理
+
+返回空数据：`public static<T> Optional<T> empty()`
+
+获取数据：`public T get()`
+
+保存数据，但是不许出现null：`public static <T> Optional<T> of(T value)`
+
+保存数据，允许出现null：`public static <T> Optional<T> ofNullable(T value)`
+
+空的时候返回其他数据:`public T orElse(T other)`
+
+![Optional](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Optional.png)
+
+**ThreadLocal类**
+
+构造方法：`public ThreadLocal()`
+
+设置数据：`public void set(T value)`
+
+取出数据：`public T get()`
+
+删除数据：`public void remove()`
+
+**Base64类**
+
+Base64可以实现加密与解密的处理，包含的内部类和方法如下图：
+
+![Base64](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Base64.png)
