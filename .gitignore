@@ -20,3 +20,5 @@ out
 Thumbs.db
 *.stackdump
 .idea/
+
+.history
