@@ -1278,3 +1278,42 @@ Comparator属于一种挽救的比较器支持，其主要目的是解决一些�
 5. 一个节点到该节点的所有子孙节点的所有路径上包含相同数目的黑色节点
 
 利用红色节点与黑色节点实现均衡的控制
+
+### 文件操作
+
+**File类**
+
+构造方法：`public File(String pathname)`
+
+构造方法：`public File(String parent, String child)`
+
+创建文件：`public boolean createNewFile() throws IOException`
+
+判断文件是否存在：`public boolean exists()`
+
+删除文件：`public boolean delete()`
+
+Windows的路径分隔符是“\”,Linux的路径分隔符是“/”，
+
+File类中的路径分隔符常量`separator`
+
+获取父路径：`public File getParentFile()`
+
+创建单级目录：`public boolean mkdir()`
+
+创建多级目录：`public boolean mkdirs()`
+
+是否可读：`public boolean canRead()`
+
+是否可写：`public boolean canWrite()`
+
+获取文件长度：`public long length()`
+
+最后得到修改时间：`public long lastModified()`
+
+判断是否为目录：`public boolean isFile()`
+
+判断是否为文件：`public boolean isDirectory()`
+
+列出目录：`public File[] listFiles()`
+
