@@ -1210,3 +1210,49 @@ Option类的主要功能是进行null的相关处理
 Base64可以实现加密与解密的处理，包含的内部类和方法如下图：
 
 ![Base64](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Base64.png)
+
+### 比较器
+
+**Arrays类**
+
+数组的排序：`public static void sort(int[] a)`
+
+数组的输出：`public static String toString(int[] a)`
+
+**Comparable比较器**
+
+接口定义：`public interface Comparable<T>`
+
+实现比较的方法：`int compareTo(T o)`
+
+**Comparator比较器**
+
+Comparator属于一种挽救的比较器支持，其主要目的是解决一些没有使用Comparable排序的类的对象的数组排序操作
+
+接口定义：
+
+定义排序规则类
+
+**二叉树结构**
+
+节点的左子树小于该节点，节点的右子树大于该节点
+
+节点的定义：
+
+添加节点：
+
+中序遍历节点：
+
+二叉树的定义
+
+添加节点
+
+返回对象数组
+
+
+二叉树的删除操作
+
+1. 删除叶子节点
+2. 删除只有左子树或右子树的节点
+3. 删除有左右子树的节点
+
