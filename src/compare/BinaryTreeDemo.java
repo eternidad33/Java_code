@@ -60,10 +60,20 @@ class Person implements Comparable<Person> {
 public class BinaryTreeDemo {
     public static void main(String[] args) {
         BinaryTree<Person> tree = new BinaryTree<>();
-        tree.add(new Person("张三", 15));
-        tree.add(new Person("李四", 13));
-        tree.add(new Person("王五", 25));
-        tree.add(new Person("马六", 9));
+        tree.add(new Person("张三", 80));
+        tree.add(new Person("张三", 50));
+        tree.add(new Person("张三", 90));
+        tree.add(new Person("张三", 30));
+        tree.add(new Person("张三", 35));
+        tree.add(new Person("张三", 60));
+        tree.add(new Person("张三", 85));
+        tree.add(new Person("张三", 95));
+        tree.add(new Person("张三", 10));
+        tree.add(new Person("张三", 55));
+        tree.add(new Person("张三", 70));
+        tree.remove(new Person("张三",80));
+        tree.remove(new Person("张三",50));
+//        System.out.println(tree.contains(new Person("张",30)));
         System.out.println(Arrays.toString(tree.toArray()));
     }
 }
