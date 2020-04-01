@@ -39,6 +39,7 @@ class FileUtil {
         try {
             input = new FileInputStream(this.srcFile);
             output = new FileOutputStream(this.desFile);
+            //JDK1.9开始有的方法
             input.transferTo(output);
 //            int len = 0;
 //            //1.读取数据保存到数组中，返回数组长度
