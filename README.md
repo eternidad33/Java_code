@@ -1461,3 +1461,27 @@ System.err.println("我是System.err");
 
 设置分隔符：`public Scanner useDelimiter(Pattern pattern)`
 
+### 对象序列化
+
+>  序列化 (Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。在序列化期间，对象将其当前状态写入到临时或持久性存储区。以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 
+
+Person类产生的每一个对象都可以实现二进制的数据传输，属于可以被序列化的程序类
+
+**序列化与反序列化**
+
+| 序列化                                                       | 反序列化                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ObjectOutputStream`                                         | `ObjectInputStream`                                          |
+| `public class ObjectOutputStream    extends OutputStream implements ObjectOutput, ObjectStreamConstants` | `public class ObjectInputStream    extends InputStream implements ObjectInput, ObjectStreamConstants` |
+| `public ObjectOutputStream(OutputStream out) throws IOException` | `public ObjectInputStream(InputStream in) throws IOException` |
+| `public final void writeObject(Object obj) throws IOException` | `public final Object readObject()    throws IOException, ClassNotFoundException` |
+
+在Java中的序列化与反序列化必须使用内部提供的对象操作流，如果要实现一组对象的序列化，则可以使用对象数组完成
+
+**transient关键字**
+
+默认情况下当执行了对象序列化的时候会将类中的全部属性的内容进行全部的序列化操作，但是很多情况下有一些属性可能并不需要进行序列化的处理。
+
+`private transient String name;`
+
+进行序列化处理的时候，`name`属性的内容是不会被保存下来的，换言之，读取的数据`name`将是其对应数据类型的默认值`null`
