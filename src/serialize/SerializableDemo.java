@@ -12,7 +12,7 @@ import java.io.*;
  */
 class Person implements Serializable {
     //Person类产生的每一个对象都可以实现二进制的数据传输，属于可以被序列化的程序类
-    private String name;
+    private transient String name;
     private int age;
 
     public Person(String name, int age) {
