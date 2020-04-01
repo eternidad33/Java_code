@@ -33,24 +33,43 @@ class FileUtil {
         if (!this.desFile.getParentFile().exists()) {
             this.desFile.getParentFile().mkdirs();
         }
-        byte[] data = new byte[1024];
+        return copyFileImpl(this.srcFile, this.desFile);
+    }
+
+    public boolean copyDir() throws Exception {
+        this.copyImpl(this.srcFile);
+        try {
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void copyImpl(File file) throws Exception {
+        if (file.isDirectory()) {
+            File[] results = file.listFiles();
+            if (results != null) {
+                for (int i = 0; i < results.length; i++) {
+                    copyImpl(results[i]);
+                }
+            }
+        } else {
+            String newFilePath = file.getPath().replace(this.srcFile.getPath() + File.separator, "");
+            File newFile = new File(this.desFile, newFilePath);
+            this.copyFileImpl(file, newFile);
+            System.out.println(file + "\t" + newFile);
+        }
+    }
+
+    public boolean copyFileImpl(File srcFile, File desFile) throws Exception {
         InputStream input = null;
         OutputStream output = null;
         try {
             input = new FileInputStream(this.srcFile);
             output = new FileOutputStream(this.desFile);
-            //JDK1.9开始有的方法
             input.transferTo(output);
-//            int len = 0;
-//            //1.读取数据保存到数组中，返回数组长度
-//            //2.判断数组长度是否为-1
-//            while ((len = input.read(data)) != -1) {
-//                output.write(data, 0, len);
-//            }
             return true;
         } catch (IOException e) {
-//            e.printStackTrace();
-//            return false;
             throw e;
         } finally {
             if (input != null) {
@@ -71,7 +90,11 @@ public class FileCopy {
         }
         long start = System.currentTimeMillis();
         FileUtil fileUtil = new FileUtil(args[0], args[1]);
-        System.out.println(fileUtil.copy() ? "文件拷贝成功" : "文件拷贝失败");
+        if (new File(args[0]).isFile()) {
+            System.out.println(fileUtil.copy() ? "文件拷贝成功" : "文件拷贝失败");
+        } else {
+            fileUtil.copyDir();
+        }
         long end = System.currentTimeMillis();
         System.out.println("程序执行时间：" + (end - start) + "ms");
     }
