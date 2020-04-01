@@ -1317,3 +1317,147 @@ File类中的路径分隔符常量`separator`
 
 列出目录：`public File[] listFiles()`
 
+### 字节流与字符流
+
+File类只能够操作文件本身，而不能操作文件的内容	
+
+字节处理流：`OutputStream`（输出字节流）,`InputStream`（输入字节流）
+
+字符处理流：`Writer`（输出字符流）,`Reader`（输入字符流）
+
+流的操作属于资源操作，资源操作必须进行关闭处理
+
+**`OutputStream`字节输出流**
+
+定义：`public abstract class OutputStream implements Closeable, Flushable`
+
+`OutputStream`的继承关系如图:
+
+![OutputStream](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/OutputStream.png)
+
+`OutputStream`是一个公共的输出操作标准
+
+`FileOutputStream`是`OutputStream`的实现子类
+
+【覆盖】构造方法：`public FileOutputStream(File file) throws FileNotFoundException`
+
+【追加】构造方法：`public FileOutputStream(File file, boolean append)    throws FileNotFoundException`
+
+**`InputStream`字节输入流**
+
+`InputStream`的继承关系与方法
+
+![InputStream](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/InputStream.png)
+
+使用read()方法读取的时候只能够以字节数组为主进行接收
+
+**`Writer`字符输出流**
+
+Writer的继承关系及方法：
+
+![Writer](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Writer.png)
+
+`Writer`是字符流，字符处理的优势在于中文数据。
+
+**`Reader`字符输入流**
+
+Reader的构造：
+
+![Reader](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Reader.png)
+
+**字节流与字符流的区别**
+
+`OutputStream`不关闭可以正常保存
+
+`Writer`不关闭不能正常保存
+
+因为`Writer`使用了缓冲区
+
+涉及中文信息的都采用字符流
+
+**转换流**
+
+| `OutputStreamWriter`                             | `InputStreamReader`                             |
+| ------------------------------------------------ | ----------------------------------------------- |
+| `public class OutputStreamWriter extends Writer` | `public class InputStreamReader extends Reader` |
+| `public OutputStreamWriter(OutputStream out)`    | `public InputStreamReader(InputStream in)`      |
+
+转换流可以使字节流转换为字符流
+
+`FileWriter`继承结构
+
+![FileWriter](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/FileWriter.png)
+
+`FileReader`继承结构
+
+![FileReader](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/FileReader.png)
+
+### IO操作深入
+
+**字符编码**
+
+- GBK/GB2312：国际编码，可以描述中文信息，GB2312只描述简体中文
+- ISO8859-1：国际通用编码，可以用于描述所有字母信息
+- UNICODE编码：采用十六进制方式存储，可用于描述所有的文字信息
+- UTF编码：象形文字采用十六进制编码，字母采用ISO8859-1编码，有利于数据传输，节省带宽
+- 项目中一般都统一使用UTF-8编码
+
+列出系统信息`System.getProperties().list(System.out);`
+
+**内存操作流**
+
+Java有两类内存操作流：
+
+1. 字节内存操作流
+
+2. 字符内存操作流
+
+**管道流**
+
+1. 字节管道流
+2. 字符管道流
+
+![流结构](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/流结构.jpg)
+
+### 输入与输出支持
+
+**打印流**
+
+| PrintStream                                                  | PrintWriter                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `public class PrintStream extends FilterOutputStream    implements Appendable, Closeable` | `public class PrintWriter extends Writer`                    |
+| `public PrintStream(OutputStream out)`                       | `public PrintWriter (Writer out)`,`public PrintWriter(OutputStream out)` |
+
+对文件进行操作时通常使用打印流
+
+**System类对IO的支持**
+
+- 标准输出（显示器）：`public final static PrintStream out = null;`
+- 错误输出：`public final static PrintStream err = null;`
+- 标准输入（键盘）：`public final static InputStream in = null;`
+
+```java
+System.out.println("我是System.out");
+System.err.println("我是System.err");
+```
+
+`System.out`输出黑色字体
+
+`System.err`输出红色字体
+
+`System.in`并不常用
+
+**`BufferedReader`缓冲输入流**
+
+读取一行数据`public String readLine() throws IOException`
+
+**Scanner扫描流**
+
+构造：`public Scanner(InputStream source)`
+
+判断是否有数据：`public boolean hasNext()`
+
+取出数据：`public String next() `
+
+设置分隔符：`public Scanner useDelimiter(Pattern pattern)`
+
