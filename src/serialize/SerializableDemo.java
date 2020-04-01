@@ -1,6 +1,6 @@
 package serialize;
 
-import java.io.Serializable;
+import java.io.*;
 
 /**
  * 项目名 Java_code
@@ -20,6 +20,22 @@ class Person implements Serializable {
         this.age = age;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Person{");
@@ -31,4 +47,25 @@ class Person implements Serializable {
 }
 
 public class SerializableDemo {
+    private static final File SAVE_FILE = new File("F:" + File.separator + "test.person");
+
+    public static void main(String[] args) throws Exception {
+//        saveObject(new Person("张三",22));
+        System.out.println(loadObject());
+    }
+
+    public static void saveObject(Object obj) throws Exception {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_FILE));
+        //输出对象
+        //序列化
+        oos.writeObject(obj);
+        oos.close();
+    }
+
+    public static Object loadObject() throws Exception {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SAVE_FILE));
+        //反序列化
+        Object obj = ois.readObject();
+        return obj;
+    }
 }
