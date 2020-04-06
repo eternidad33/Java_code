@@ -1485,3 +1485,21 @@ Person类产生的每一个对象都可以实现二进制的数据传输，属�
 `private transient String name;`
 
 进行序列化处理的时候，`name`属性的内容是不会被保存下来的，换言之，读取的数据`name`将是其对应数据类型的默认值`null`
+
+### 反射机制
+
+> 所有的技术实现的目标只有一点：重用性
+
+根据实例化对象反推出其类型
+
+1. 获取Class对象信息：`public final Class<?> getClass()`
+    - class类定义：`public final class Class<T> implements java.io.Serializable,GenericDeclaration,Type,AnnotatedElement`
+2. JVM直接支持采用“类.class”的形式实例化
+3. Class.forName().`public static Class<?> forName(String className) throws ClassNotFoundException`
+
+**反射实例化对象**
+
+通过`public T newInstance()`实例化对象
+
+
+相当于“`类名 对象名 = new 类()`”，但是该方法只能调用无参构造，JDK9 之后被废弃
