@@ -1503,3 +1503,40 @@ Person类产生的每一个对象都可以实现二进制的数据传输，属�
 
 
 相当于“`类名 对象名 = new 类()`”，但是该方法只能调用无参构造，JDK9 之后被废弃
+
+### 集合工具类
+
+**Stack类**
+
+入栈`public E push(E item)`
+
+出栈`public synchronized E pop()`
+
+Stack的继承结构如下：
+
+![stack](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Stack.png)
+
+
+空栈时出栈会出现`Exception in thread "main" java.util.EmptyStackException`
+
+**Queue接口**
+
+追加数据：`boolean add(E e);`或`boolean offer(E e);`
+
+通过队列获取数据：`E poll();`弹出后删除数据
+
+优先级队列`PriorityQueue`
+
+**Properties属性操作**
+
+Properties类只能操作String
+
+使用Properties类型的最大特点是可以进行资源内容的输入与输出的处理操作
+
+**Collections类**
+
+解释Collection与Collections的区别
+
+- Collection是集合接口，允许保存单值对象
+- Collections是集合操作的工具类。
+
