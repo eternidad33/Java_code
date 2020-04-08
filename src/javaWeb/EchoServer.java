@@ -16,31 +16,50 @@ import java.util.Scanner;
  * @author Vigilr
  */
 public class EchoServer {
+    private static class ClientThread implements Runnable{
+        private Socket client=null;
+        private Scanner scanner=null;
+        private PrintStream out=null;
+        private boolean flag=true;
+
+        public ClientThread(Socket client) throws IOException {
+            this.client = client;
+            this.scanner = new Scanner(client.getInputStream());
+            this.scanner.useDelimiter("\n");
+            this.out = new PrintStream(client.getOutputStream());
+        }
+
+        @Override
+        public void run() {
+            while (this.flag) {
+                if (scanner.hasNext()) {
+                    String value = scanner.next().trim();
+                    if ("bye-bye".equalsIgnoreCase(value)) {
+                        out.print("bye-bye.......");
+                        this.flag = false;
+                    } else {
+                        out.print("【echo】" + value);
+                    }
+                }
+            }
+            try {
+                scanner.close();
+                out.close();
+                client.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public static void main(String[] args) throws IOException {
         //设置服务器监听端口
         ServerSocket server = new ServerSocket(9999);
         System.out.println("等待客户端连接....");
-        //有客户端连接
-        Socket client = server.accept();
-        //获取客户端的输入流
-        Scanner scanner = new Scanner(client.getInputStream());
-        scanner.useDelimiter("\n");
-        //客户端输出流
-        PrintStream out = new PrintStream(client.getOutputStream());
         boolean flag = true;
-        while (flag) {
-            if (scanner.hasNext()) {
-                String value = scanner.next().trim();
-                if ("bye-bye".equalsIgnoreCase(value)) {
-                    out.print("bye-bye.......");
-                    flag = false;
-                } else {
-                    out.print("【echo】" + value);
-                }
-            }
+        while (flag){
+            Socket client =server.accept();
+            new Thread(new ClientThread(client)).start();
         }
-        scanner.close();
-        out.close();
         server.close();
     }
 }
