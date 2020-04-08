@@ -1540,3 +1540,36 @@ Properties类只能操作String
 - Collection是集合接口，允许保存单值对象
 - Collections是集合操作的工具类。
 
+### Stream数据流
+
+**Stream基础操作**
+
+Stream主要功能是进行数据的分析处理，主要是针对于集合中的数据进行分析操作
+
+ 可以通过函数式编程进行数据的流式处理
+
+**数据个数的统计**
+
+
+**数据采集**
+
+`<R, A> R collect(Collector<? super T, A, R> collector);`
+
+
+**分页处理方法**
+
+- 设置取出的最大数据量：`Stream<T> limit(long maxSize);`
+
+- 跳过指定数据量：`Stream<T> skip(long n);`
+
+**MapReduce基础模型**
+
+`all.stream()`用于初始化Stream对象
+
+`.filter((ele)->ele.getName().contains("小米"))`过滤出商品名称中含有小米的数据。
+
+`.mapToDouble((olderObject)->olderObject.getPrice()*olderObject.getCount()).summaryStatistics();`计算出单种商品的总价，然后返回`DoubleSummaryStatistics`类型的对象。
+
+`DoubleSummaryStatistics`一些常用的方法
+
+![DoubleSummaryStatistics](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/DoubleSummaryStatistics.png)
