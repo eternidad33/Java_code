@@ -1573,3 +1573,31 @@ Stream主要功能是进行数据的分析处理，主要是针对于集合中�
 `DoubleSummaryStatistics`一些常用的方法
 
 ![DoubleSummaryStatistics](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/DoubleSummaryStatistics.png)
+
+
+### 网络编程
+
+针对网络程序的开发有两种模型：
+
+1. C/S（Client/Server，客户端与服务器端）
+2. B/S（Browser/Server，浏览器与服务器端）
+
+TCP（可靠的数据连接）
+
+UDP（不可靠的数据连接）
+
+**TCP**
+
+TCP的程序开发是网络程序最基本的开发模型，其核心的特点是使用两个类实现数据的交互处理：ServerSocket（服务器端），Socket（客户端）
+
+简要工作流程如图：
+
+ ![Scoket](https://cdn.jsdelivr.net/gh/eternidad33/picbed@master/img/Socket.png)
+
+ServerSocket的主要目的是设置服务器监听的端口，Socket要指明要连接的服务器地址与端口
+
+**UDP**
+
+UDP程序是基于数据报的网络编程实现，如果想实现UDP程序需要两个类：`DatagramSocket`和`DatagramPacket`
+
+
