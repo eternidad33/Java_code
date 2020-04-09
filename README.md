@@ -1601,3 +1601,115 @@ ServerSocket的主要目的是设置服务器监听的端口，Socket要指明�
 UDP程序是基于数据报的网络编程实现，如果想实现UDP程序需要两个类：`DatagramSocket`和`DatagramPacket`
 
 
+### JDBC
+
+对于JDBC的程序数据库的访问分为如下四种形式：
+
+1. JDBC-ODBC桥连接	
+
+   处理流程：程序→JDBC→ODBC→数据库
+
+2. JDBC连接：直接通过JDBC进行数据库的连接
+
+   处理流程：程序→JDBC→数据库
+
+3. JDBC网络连接：通过特定的网络协议连接指定的数据库服务
+
+   处理流程：程序→JDBC→网络数据库(IP地址，端口号)
+
+4. JDBC协议连接
+
+Java访问MySQL过程；
+
+1. 设置驱动
+
+   ```java
+   `static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+   ```
+
+2. 设置数据库地址
+
+   ```java
+   static final String DB_URL = "jdbc:mysql://localhost:3308/test";
+   ```
+
+3. 设置用户名和密码
+
+   ```java
+   static final String USER = "root";
+   static final String PASS = "123456";
+   ```
+
+4. 初始化连接对象和游标对象
+
+   ```java
+   Connection conn = null;
+   Statement stmt = null;
+   ```
+
+5. 注册JDBC驱动
+
+   ```java
+   Class.forName(JDBC_DRIVER);
+   ```
+
+6. 打开连接
+
+   ```java
+   conn = DriverManager.getConnection(DB_URL, USER, PASS);
+   ```
+
+7. 执行查询语句
+
+   ```java
+   System.out.println(" 实例化Statement对象...");
+   stmt = conn.createStatement();
+   String sql;
+   sql = "SELECT id, name, url FROM websites";
+   ResultSet rs = stmt.executeQuery(sql);
+   ```
+
+8. 用` ResultSet `对象接收返回结果
+
+   ```java
+   ResultSet rs = stmt.executeQuery(sql);
+   ```
+
+9. 遍历` ResultSet `对象
+
+   ```java
+   while (rs.next()) {
+       // 通过字段检索
+       int id = rs.getInt("id");
+       String name = rs.getString("name");
+       String url = rs.getString("url");
+       // 输出数据
+       System.out.print("ID: " + id);
+       System.out.print(", 站点名称: " + name);
+       System.out.print(", 站点 URL: " + url);
+       System.out.print("\n");
+   }
+   ```
+
+10. 关闭资源
+
+    ```java
+    rs.close();
+    stmt.close();
+    conn.close();
+    ```
+运行结果：
+
+```shell
+Thu Apr 09 18:03:44 CST 2020 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+ 实例化Statement对象...
+ID: 1, 站点名称: Google, 站点 URL: https://www.google.cm/
+ID: 2, 站点名称: 淘宝, 站点 URL: https://www.taobao.com/
+ID: 3, 站点名称: 菜鸟教程, 站点 URL: http://www.runoob.com
+ID: 4, 站点名称: 微博, 站点 URL: http://weibo.com/
+ID: 5, 站点名称: Facebook, 站点 URL: https://www.facebook.com/
+Goodbye!
+```
+
+> MySQL 8.0以上版本需设置JDBC为`    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";`
+
