@@ -368,11 +368,11 @@ JDK1.8 之前，在进行设计时，一般子类不直接继承接口，中间�
 
 **懒汉式**
 
-​ 在第一次使用时进行实例化处理
+ 在第一次使用时进行实例化处理
 
 **饿汉式**
 
-​ 在系统加载类时，实例化对象
+ 在系统加载类时，实例化对象
 
 **多例设计**
 
@@ -1129,8 +1129,8 @@ public static void main(String[] args) {
 CharSequence 是描述字符串结构的接口
 
 | String | StringBuffer | StringBuilder |
-| | | |
-| public final class String<br/>extends Object<br/>implements Serializable, Comparable<String>, **CharSequence** | public final class StringBuffer<br/>extends Object<br/>implements Serializable, **CharSequence** | public final class StringBuilder<br/>extends Object<br/>implements Serializable, **CharSequence** |
+| ------|----- |------ |
+| public final class String<br/>extends Object<br/>implements Serializable, Comparable<String>, CharSequence |public final class StringBuffer<br/>extends Object<br/>implements Serializable, CharSequence|public final class StringBuilder<br/>extends Object<br/>implements Serializable, CharSequence |
 
 **Runtime 类**
 
@@ -1615,6 +1615,7 @@ Java 访问 MySQL 过程；
     static final String DB_URL = "jdbc:mysql://localhost:3308/test";
     ```
 
+
 3.  设置用户名和密码
 
     ```java
@@ -1675,13 +1676,13 @@ Java 访问 MySQL 过程；
 
 10. 关闭资源
 
-        ```java
-        rs.close();
-        stmt.close();
-        conn.close();
-        ```
+```java
+rs.close();
+stmt.close();
+conn.close();
+```
 
-    运行结果：
+运行结果：
 
 ```shell
 Thu Apr 09 18:03:44 CST 2020 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
@@ -1697,3 +1698,4 @@ Goodbye!
 > MySQL 8.0 以上版本需设置 JDBC 为`static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";`
 
 <p align="center"><a href="#目录">✨ 返回目录 ✨</a></p>
+
